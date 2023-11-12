@@ -8,7 +8,6 @@ import profCard5 from "../../img/profCard5.png";
 import sticker from "../../img/sticker.png";
 import logo from "../../img/logo.png";
 import { Link } from "react-router-dom";
-import { useState } from "react";
 
 const courses = [
   { id: "1", img: profCard1 },
@@ -19,7 +18,6 @@ const courses = [
 ];
 
 export const Main = () => {
-  const [show, setShow] = useState(false);
 
       return (
     <S.Container>
