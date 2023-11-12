@@ -62,8 +62,6 @@ export const TitleTextSpan = styled.span`
 `;
 
 export const Sticker = styled.img`
-  width: 212.27px;
-  height: 151.74px;
   left: 1158.99px;
   top: 100px;
   transform: rotate(15deg);

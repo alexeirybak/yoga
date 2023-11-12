@@ -11,7 +11,7 @@ export const ContainerEnter = styled.div`
   height: 100vh;
   margin: 0 auto;
   position: relative;
-  background-color: rgb(0 0 0 / 85%);
+  background: #271a58;
 `
 
 export const ModalBlock = styled.div`
