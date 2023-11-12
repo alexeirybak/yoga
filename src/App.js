@@ -1,10 +1,10 @@
-import "./App.css";
+
+import { AppRoutes } from "./pages/routers/routers";
 
 function App() {
+
   return (
-    <div className="App">
-      <h1>Hello, team! Hello-hello!</h1>
-    </div>
+    <AppRoutes/>
   );
 }
 
