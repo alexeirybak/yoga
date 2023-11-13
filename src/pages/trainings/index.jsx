@@ -1,48 +1,11 @@
-import { useState } from "react";
+import Header from 'components/header/header';
 import * as S from "./styles";
 
 export const Trainings = () => {
-  const [menuVisible, setMenuVisible] = useState(false);
 
-  const menuAppear = () => {
-    setMenuVisible(!menuVisible);
-  };
   return (
     <S.Wrapper>
-      <S.LogoBlock>
-        <S.Logo src="/logo.png" alt="logo" />
-      </S.LogoBlock>
-      <S.PersonBlock>
-        <S.PersonPlace>
-          <S.PersonDetails onClick={menuAppear}>
-            <S.PersonIcon />
-            <S.PersonName>rybak2108@yandex.ru</S.PersonName>
-            <S.PersonMenuBlock>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="14"
-                height="9"
-                viewBox="0 0 14 9"
-                fill="none"
-              >
-                <path
-                  d="M12.3553 1.03308L6.67773 6.7107L1.00012 1.03308"
-                  stroke="black"
-                  stroke-width="2"
-                />
-              </svg>
-            </S.PersonMenuBlock>
-            <S.MenuList
-              $menuVisible={menuVisible}
-              onMouseLeave={() => setMenuVisible(false)}
-            >
-              <S.MenuItem>На главную</S.MenuItem>
-              <S.MenuItem>Профиль</S.MenuItem>
-              <S.MenuItem>Выйти</S.MenuItem>
-            </S.MenuList>
-          </S.PersonDetails>
-        </S.PersonPlace>
-      </S.PersonBlock>
+      <Header/>
       <S.ContentBlock>
         <S.ContentVideoBlock>
           <S.VideoHeader>Йога</S.VideoHeader>

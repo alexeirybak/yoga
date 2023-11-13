@@ -3,7 +3,6 @@ import * as S from './styles'
 export const Login = () => {
   return (
     <S.Wrapper>
-      
       <S.ContainerEnter>
       <S.ModalFormLoginTopImg src="/logo-top.png" alt="logo" />
         <S.ModalBlock>
