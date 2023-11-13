@@ -7,7 +7,7 @@ import Ellipse from "../../img/Ellipse.png";
 export function Header() {
   const navigate = useNavigate();
   const [visible, setVisible] = useState(true);
-  let user = 'Майор Попидоркин';
+  let user = 'UserName';
 
   const toggleVisibility = () => setVisible(!visible);
   const ToMain = () => {

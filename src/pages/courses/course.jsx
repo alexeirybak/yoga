@@ -4,7 +4,7 @@ import n1 from "../../img/n1.png";
 import n2 from "../../img/n2.png";
 import n3 from "../../img/n3.png";
 import Handset from "../../img/phone.png";
-import { Header } from "../../components/header/header";
+import { Header } from "../../Components/header/header";
 
 export default function Course() {
     const textAboutTraining = [
