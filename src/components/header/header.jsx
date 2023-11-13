@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import * as S from "./headerStyle";
-import logoBlack from "../../img/logoBlack.png";
-import Ellipse from "../../img/Ellipse.png";
+
 
 export function Header() {
   const navigate = useNavigate();
@@ -25,12 +24,12 @@ export function Header() {
         <S.HeadContentDiv>
           <S.LogoTitleDiv>
             <Link to="/">
-              <S.LogoImg src={logoBlack} alt="logo" />
+              <S.LogoImg src="/img/logoBlack.png" alt="logo" />
             </Link>
           </S.LogoTitleDiv>
           <S.UserDiv>
             <Link to="/profile">
-              <S.UserPhotoImg src={Ellipse} alt="userphoto" />
+              <S.UserPhotoImg src="/img/Ellipse.png" alt="userphoto" />
             </Link>
             <S.UserNameSpan onClick={toggleVisibility}>
               {user} ↓

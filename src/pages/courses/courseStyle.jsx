@@ -58,7 +58,7 @@ export const HeadContentBlock = styled.div`
   background-position: top;
   background: cover;
   border-radius: 30px;
-  backgroundImage: '../../img/background_prof_1.png'
+  background-image: url(../../img/course.png);
 `;
 
 export const SubTitleBlock = styled.div`
