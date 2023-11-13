@@ -23,7 +23,9 @@ button,
 }
 @font-face {
   font-family: 'StratosSkyeng';
-  src: local("StratosSkyeng"), local("StratosSkyeng"), url("../fonts/Stratos-Regular.woff2") format("woff2"), url("../fonts/Stratos-Regular.woff") format("woff");
+  src: local("StratosSkyeng"), local("StratosSkyeng"), 
+  url('/fonts/stratosskyengweb-regular.woff2') format("woff2"), 
+  url('/fonts/stratosskyengweb-regular.woff') format("woff");
   font-weight: 400;
   font-style: normal;
 }
