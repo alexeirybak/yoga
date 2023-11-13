@@ -1,9 +1,5 @@
 
 import * as S from "./courseStyle";
-import n1 from "../../img/n1.png";
-import n2 from "../../img/n2.png";
-import n3 from "../../img/n3.png";
-import Handset from "../../img/phone.png";
 import { Header } from "../../Components/header/header";
 
 export default function Course() {
@@ -31,19 +27,19 @@ export default function Course() {
         <S.TitleLikeText>Подойдет для вас, если:</S.TitleLikeText>
         <S.LikesBlock>
           <S.LikesSubBlock>
-            <S.LikesImg src={n1} alt="number" />
+            <S.LikesImg src="/img/n1.png" alt="number" />
             <S.LikesTextBlock>
               <S.LikesText>{textByNumber[0].text}</S.LikesText>
             </S.LikesTextBlock>
           </S.LikesSubBlock>
           <S.LikesSubBlock>
-            <S.LikesImg src={n2} alt="number" />
+            <S.LikesImg src="/img/n2.png" alt="number" />
             <S.LikesTextBlock>
               <S.LikesText>{textByNumber[1].text}</S.LikesText>
             </S.LikesTextBlock>
           </S.LikesSubBlock>
           <S.LikesSubBlock>
-            <S.LikesImg src={n3} alt="number" />
+            <S.LikesImg src="/img/n3.png" alt="number" />
             <S.LikesTextBlock>
               <S.LikesText>{textByNumber[2].text}</S.LikesText>
             </S.LikesTextBlock>
@@ -98,7 +94,7 @@ export default function Course() {
               Записаться на тренировку
             </S.SignUpTrainingButton>
           </S.FooterSubBlock>
-          <S.HandsetImg src={Handset} alt="Handset" />
+          <S.HandsetImg src="/img/phone.png" alt="Handset" />
         </S.FooterContentBlock>
       </S.ContentBlock>
     </S.Container>
