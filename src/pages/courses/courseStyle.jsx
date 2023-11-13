@@ -159,13 +159,17 @@ export const DirectionsBlock = styled.div`
   gap: 168px;
   width: 650px;
   margin-top: 22px;
+  margin-left: 25px;
 `;
 
 export const DirectionsSubBlock = styled.div`
   width: 260px;
+
 `;
 
-export const DirectionsList = styled.ul``;
+export const DirectionsList = styled.ul`
+
+`;
 
 export const DirectionsListLi = styled.li`
   font-family: "StratosSkyeng";
@@ -175,6 +179,7 @@ export const DirectionsListLi = styled.li`
   line-height: 32px;
   white-space: pre-wrap;
   color: black;
+
 `;
 
 export const InfoBlock = styled.div`
