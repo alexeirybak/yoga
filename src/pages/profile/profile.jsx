@@ -1,3 +1,4 @@
+
 import * as S from "./profileStyle";
 import { useState } from "react";
 import { Header } from "../../Components/header/header";
@@ -21,6 +22,7 @@ export default function Profile() {
             <div>
               <S.UserLogin/>
               <S.LoginButton >Сохранить</S.LoginButton>
+
               <S.LoginButton onClick={() => setEdit(false)}>
                 Отмена
               </S.LoginButton>
@@ -56,6 +58,7 @@ export default function Profile() {
           </S.PassButton>
         </S.ChangeLogPass>
         <S.TitleCourse>Мои курсы</S.TitleCourse>
+
           <S.SportChoice>
               <li>
                 <S.Sport>
@@ -64,10 +67,12 @@ export default function Profile() {
                     alt="prof_card"
                   />
                   <S.SportButton>
+
                     Перейти →
                   </S.SportButton>
                 </S.Sport>
               </li>
+
             
           </S.SportChoice>
       </S.Content>
@@ -84,3 +89,4 @@ export default function Profile() {
 //       </Link>
 //     </div>
 //   )
+

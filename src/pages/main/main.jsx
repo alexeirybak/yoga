@@ -16,7 +16,7 @@ export const Main = () => {
       <S.Content>
         <S.LogoTitle>
           <S.Logo src="/img/logo.png" alt="logo" />
-            <Link to="/login">
+            <Link to="/login222">
               
               <S.Enter>Войти</S.Enter>
             </Link>
