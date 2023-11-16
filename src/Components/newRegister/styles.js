@@ -51,8 +51,6 @@ export const ModalFormLogin = styled.form`
   padding: 33px 47px 47px 41px;
 `;
 
-export const ModalFormLoginLink = styled.a``;
-
 export const ModalFormLoginTopImg = styled.img`
   position: absolute;
   top: 2rem;
