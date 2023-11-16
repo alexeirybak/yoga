@@ -1,26 +1,44 @@
-import styled, { css } from 'styled-components'
+import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  width: 100%;
-  min-height: 100%;
-  overflow: hidden;
-`
-
-export const ContainerEnter = styled.div`
-  max-width: 100%;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  z-index: 999;
+  width: 100vw;
   height: 100vh;
-  margin: 0 auto;
-  position: relative;
-  background-color: #271A58;
-`
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
 
 export const ModalBlock = styled.div`
+  position: relative;
+`;
+
+export const Closer = styled.img`
   position: absolute;
-  z-index: 2;
-  left: calc(50% - (366px / 2));
-  top: calc(50% - (401px / 2));
-  opacity: 1;
-`
+  z-index: 999;
+  top: 0px;
+  right: 0px;
+  padding: 10px;
+  display: block;
+  cursor: pointer;
+`;
+
+export const ErrorMessage = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  color: rgb(255, 128, 113);
+  font-size: 1rem;
+  font-weight: 400;
+  position: absolute;
+  top: 80px;
+  left: 5px;
+`;
 
 export const ModalFormLogin = styled.form`
   display: flex;
@@ -31,9 +49,9 @@ export const ModalFormLogin = styled.form`
   background-color: #fff;
   border-radius: 12px;
   padding: 33px 47px 47px 41px;
-`
+`;
 
-export const ModalFormLoginLink = styled.a``
+export const ModalFormLoginLink = styled.a``;
 
 export const ModalFormLoginTopImg = styled.img`
   position: absolute;
@@ -45,7 +63,7 @@ export const ModalFormLoginTopImg = styled.img`
 export const ModalFormLoginImg = styled.img`
   display: block;
   margin: auto;
-`
+`;
 
 export const ModalFormLoginInput = styled.div`
   width: 278px;
@@ -53,24 +71,26 @@ export const ModalFormLoginInput = styled.div`
   display: flex;
   flex-direction: column;
   row-gap: 20px;
-`
+`;
 
-export const ModalFormLoginButtons = styled(ModalFormLoginInput)``
+export const ModalFormLoginButtons = styled(ModalFormLoginInput)``;
 
 export const Text = styled.p`
-  padding: 38px 0 20px 41px;
+  padding-top: 38px;
+  padding-bottom: 20px;
   color: #000;
-  font-variant-numeric: lining-nums proportional-nums;
   font-family: StratosSkyeng, sans-serif;
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
   line-height: 24px;
   letter-spacing: -0.05px;
-`
+`;
 
 export const ModalInput = styled.input`
   margin-bottom: 50px;
+  padding-top: 2px;
+  padding-bottom: 8px;
   border: none;
   border-bottom: 1px solid #d0cece;
   outline: none;
@@ -83,7 +103,7 @@ export const ModalInput = styled.input`
     letter-spacing: -0.054px;
     color: #d0cece;
   }
-`
+`;
 export const ModalButtonEnter = styled.button`
   height: 52px;
   font-size: 18px;
@@ -105,4 +125,4 @@ export const ModalButtonEnter = styled.button`
   &:active {
     background-color: #271a58;
   }
-`
+`;
