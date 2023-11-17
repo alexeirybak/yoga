@@ -1,10 +1,10 @@
-import styled, { css } from 'styled-components'
+import styled, { css } from "styled-components";
 
 export const Wrapper = styled.div`
   width: 100%;
   min-height: 100%;
   overflow: hidden;
-`
+`;
 
 export const ContainerEnter = styled.div`
   max-width: 100%;
@@ -12,7 +12,7 @@ export const ContainerEnter = styled.div`
   margin: 0 auto;
   position: relative;
   background: #271a58;
-`
+`;
 
 export const ModalBlock = styled.div`
   position: absolute;
@@ -20,9 +20,9 @@ export const ModalBlock = styled.div`
   left: calc(50% - (366px / 2));
   top: calc(50% - (439px / 2));
   opacity: 1;
-`
+`;
 
-export const ModalFormLogin = styled.form`
+export const ModalFormLogin = styled.div`
   width: 366px;
   height: 439px;
   background-color: #fff;
@@ -32,11 +32,17 @@ export const ModalFormLogin = styled.form`
   justify-content: space-between;
   padding: 43px 47px 47px 41px;
   align-items: center;
-`
+`;
 
-export const ModalFormLoginLink = styled.a``
 
-export const ModalFormLoginImg = styled.img``
+export const ModalFormLoginTopImg = styled.img`
+  position: absolute;
+  top: 2rem;
+  left: 5rem;
+  cursor: pointer;
+`;
+
+export const ModalFormLoginImg = styled.img``;
 
 export const ModalFormLoginInput = styled.div`
   width: 278px;
@@ -44,9 +50,9 @@ export const ModalFormLoginInput = styled.div`
   display: flex;
   flex-direction: column;
   row-gap: 20px;
-`
+`;
 
-export const ModalFormLoginButtons = styled(ModalFormLoginInput)``
+export const ModalFormLoginButtons = styled(ModalFormLoginInput)``;
 
 export const ModalInput = styled.input`
   height: 52px;
@@ -62,7 +68,7 @@ export const ModalInput = styled.input`
     letter-spacing: -0.054px;
     color: #d0cece;
   }
-`
+`;
 
 const BtnMixin = css`
   height: 52px;
@@ -75,7 +81,7 @@ const BtnMixin = css`
   justify-content: center;
   align-items: center;
   border: none;
-`
+`;
 
 export const ModalButtonEnter = styled.button`
   ${BtnMixin};
@@ -89,7 +95,7 @@ export const ModalButtonEnter = styled.button`
   &:active {
     background-color: #271a58;
   }
-`
+`;
 
 export const ModalBtnSignup = styled.button`
   ${BtnMixin};
@@ -105,4 +111,4 @@ export const ModalBtnSignup = styled.button`
   &:active {
     background-color: #d9d9d9;
   }
-`
+`;

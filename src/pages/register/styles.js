@@ -11,7 +11,7 @@ export const ContainerEnter = styled.div`
   height: 100vh;
   margin: 0 auto;
   position: relative;
-  background-color: rgb(0 0 0 / 85%);
+  background-color: #271A58;
 `
 
 export const ModalBlock = styled.div`
@@ -22,7 +22,7 @@ export const ModalBlock = styled.div`
   opacity: 1;
 `
 
-export const ModalFormLogin = styled.form`
+export const ModalFormLogin = styled.div`
   width: 366px;
   height: 439px;
   background-color: #fff;
@@ -35,7 +35,14 @@ export const ModalFormLogin = styled.form`
   align-items: center;
 `
 
-export const ModalFormLoginLink = styled.a``
+
+
+export const ModalFormLoginTopImg = styled.img`
+  position: absolute;
+  top: 2rem;
+  left: 5rem;
+  cursor: pointer;
+`;
 
 export const ModalFormLoginImg = styled.img``
 

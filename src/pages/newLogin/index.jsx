@@ -4,6 +4,7 @@ export const NewLogin = () => {
   return (
     <S.Wrapper>
       <S.ContainerEnter>
+      <S.ModalFormLoginTopImg src="/logo-top.png" alt="logo" />
         <S.ModalBlock>
           <S.ModalFormLogin action="#">
             <S.ModalFormLoginLink href="../">

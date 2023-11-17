@@ -12,15 +12,9 @@ export const Content = styled.div`
   margin-right: 140px;
 `;
 
-export const LogoTitle = styled.div`
-  display: flex;
-  justify-content: space-between;
-  padding-top: 36px;
-  margin-right: 16px;
-  align-items: center;
-`;
 
-export const Logo = styled.img``;
+
+
 
 export const HeaderContent = styled.div`
   display: flex;
@@ -113,27 +107,5 @@ export const Up = styled.button`
   }
   &:active {
     background: #ebffab;
-  }
-`;
-export const Enter = styled.button`
-  width: 77px;
-  height: 36px;
-  left: 1223px;
-  top: 24px;
-  background: #140d40;
-  border-radius: 46px;
-  font-family: "StratosSkyeng";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
-  text-align: center;
-  font-feature-settings: "pnum" on, "lnum" on;
-  color: #ffffff;
-  &:hover {
-    background: #2d1f79;
-  }
-  &:active {
-    background: #3b29a2;
   }
 `;
