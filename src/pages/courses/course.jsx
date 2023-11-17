@@ -1,8 +1,12 @@
 
 import * as S from "./courseStyle";
 import { Header } from "../../Components/header/header";
-
+import { useAuth } from "../../hooks/use-auth";
+import { useNavigate } from "react-router-dom";
 export default function Course() {
+  const {isAuth, email} = useAuth();
+  const navigate = useNavigate();
+
     const textAboutTraining = [
         { text: 'Йога для новичков'},
         { text: 'Классическая йога'},
