@@ -27,14 +27,11 @@ export function Header() {
     <>
         <S.HeadContentDiv>
         <Link to="/">
-                        {logo.logo === "white" ? <S.LogoImg src="/img/logo.png" alt="logo" /> : <S.LogoImg src="/img/logoBlack.png" alt="logo" />}
-                    </Link>
+           {logo.logo === "white" ? <S.LogoImg src="/img/logo.png" alt="logo" /> : <S.LogoImg src="/img/logoBlack.png" alt="logo" />}
+        </Link>
           {isAuth ?     
-                
           <S.UserDiv>
-            
-              <S.UserPhotoImg src="/img/Ellipse.png" alt="userphoto" />
-              
+            <S.UserPhotoImg src="/img/Ellipse.png" alt="userphoto" />
             <S.UserNameSpan onClick={toggleVisibility}>
               {email2} ↓
             </S.UserNameSpan>
