@@ -1,3 +1,4 @@
+
 import { Routes, Route } from "react-router-dom";
 import { Main } from "../main/main";
 import { Login } from "../login/login";
@@ -16,4 +17,5 @@ export const AppRoutes = () => {
     </Routes>
     </>
     );
+
   };

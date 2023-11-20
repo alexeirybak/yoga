@@ -1,5 +1,5 @@
-
 import styled from "styled-components";
+
 
 export const Container = styled.div`
   position: relative;
@@ -87,14 +87,7 @@ export const LogButton = styled.button`
   letter-spacing: -0.05px;
   font-feature-settings: "pnum" on, "lnum" on;
   color: #ffffff;
-  border: none;
-  &:hover {
-    background-color: #3f007d;
-  }
-
-  &:active {
-    background-color: #271a58;
-  }
+  border-color: #580ea2;
 `;
 export const PassButton = styled.button`
   width: 275px;
@@ -111,14 +104,7 @@ export const PassButton = styled.button`
   letter-spacing: -0.05px;
   font-feature-settings: "pnum" on, "lnum" on;
   color: #ffffff;
-  border: none;
-  &:hover {
-    background-color: #3f007d;
-  }
-
-  &:active {
-    background-color: #271a58;
-  }
+  border-color: #580ea2;
 `;
 export const TitleCourse = styled.span`
   padding-top: 70px;
@@ -150,6 +136,14 @@ export const SportButton = styled.button`
   position: absolute;
 `;
 
+export const UserLogin = styled.input`
+  border-left: transparent;
+  border-right: transparent;
+  border-top: transparent;
+  outline: none;
+  text-align: center;
+  font-size: 15px;
+`;
 export const LoginButton = styled.button`
   background: #39316c;
   border-radius: 46px;
@@ -203,24 +197,12 @@ export const buttonNextPay = styled.button`
     background: #3b29a2;
   }
 `;
-
-export const PopUpLogin = styled.div`
-  position: fixed;
-  left: 0px;
-  top: 0px;
-  z-index: 999;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+export const Error = styled.span`
+  font-family: "StratosSkyeng";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: -0.8px;
+  color: red;
 `;
-
-export const UserLogin = styled.input`
-  position: relative;
-`;
-
-export const CloseIcon = styled.div`
-`
-
