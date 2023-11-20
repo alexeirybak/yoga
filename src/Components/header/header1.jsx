@@ -1,14 +1,17 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import * as S from "./headerStyle";
-
+import { useSelector } from "react-redux";
+import { useAuth } from "../../hooks/use-auth";
 
 export function Header() {
+  const {isAuth, email} = useAuth();
   const navigate = useNavigate();
   const [visible, setVisible] = useState(true);
-  let user = 'UserName';
-
+  const user = useSelector(state => state.user);
+  const logo = useSelector(state => state.logo)
   const toggleVisibility = () => setVisible(!visible);
+
   const ToMain = () => {
     navigate("/");
   }
@@ -22,11 +25,7 @@ export function Header() {
   return (
     <>
         <S.HeadContentDiv>
-          <S.LogoTitleDiv>
-            <Link to="/">
-              <S.LogoImg src="/img/logoBlack.png" alt="logo" />
-            </Link>
-          </S.LogoTitleDiv>
+          {isAuth ?           
           <S.UserDiv>
             <Link to="/profile">
               <S.UserPhotoImg src="/img/Ellipse.png" alt="userphoto" />
@@ -34,7 +33,17 @@ export function Header() {
             <S.UserNameSpan onClick={toggleVisibility}>
               {user} ↓
             </S.UserNameSpan>
-            </S.UserDiv>
+            </S.UserDiv> : 
+                    <S.LogoTitle>
+                    <Link to="/">
+                        {logo.logo === "white" ? <S.LogoImg src="/img/logo.png" alt="logo" /> : <S.LogoImg src="/img/logoBlack.png" alt="logo" />}
+                    </Link>
+                    <Link to="/login">
+                    <S.Enter>Войти</S.Enter>
+        </Link>
+                      </S.LogoTitle>  
+            }
+
             </S.HeadContentDiv>
             {!visible && (
                             <S.HeaderList>
