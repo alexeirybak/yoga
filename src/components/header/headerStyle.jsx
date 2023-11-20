@@ -1,5 +1,11 @@
 import styled from "styled-components";
 
+export const LogoTitleDiv = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding-top: 36px;
+  margin-right: 16px;
+`;
 export const UserDiv = styled.div`
   display: flex;
   align-items: center;
@@ -24,11 +30,12 @@ export const UserNameSpan = styled.span`
   text-align: right;
   letter-spacing: -0.1px;
   font-feature-settings: "pnum" on, "lnum" on;
-  color: #000000;
+  color: ${props => props.color};
 `;
 
 export const HeadContentDiv = styled.div`
-
+  display: flex;
+  justify-content: space-between;
 `;
 export const HeaderUl = styled.ul`
 list-style-type: none;
@@ -38,7 +45,7 @@ text-align: right;
 `
 export const HeaderLi = styled.li`
 padding-top: 10px;
-  color: black;
+  color: ${props => props.color};
   font-size: 22px;
   margin-left: 18px;
   cursor: pointer;
@@ -48,19 +55,7 @@ export const HeaderList = styled.div`
 display: block;
 `
 
-
-export const LogoTitle = styled.div`
-  display: flex;
-  justify-content: space-between;
-  padding-top: 36px;
-  margin-right: 16px;
-  align-items: center;
-`;
-
-export const Logo = styled.img``;
-
-
-export const Enter = styled.button`
+export const EnterButton = styled.button`
   width: 77px;
   height: 36px;
   left: 1223px;

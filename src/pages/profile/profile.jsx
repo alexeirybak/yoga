@@ -1,15 +1,22 @@
 
 import * as S from "./profileStyle";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Header } from "../../Components/header/header";
 import { NewLogin } from "../../Components/newLogin/newLogin";
 import { NewRegister } from "../../Components/newRegister/newRegister";
+import { setLogo } from "../../store/slices/logoSlices";
+import { useDispatch } from "react-redux";
 
 export default function Profile() {
   const [edit, setEdit] = useState(false);
   const [editPass, setEditPass] = useState(false);
   const [valuePass, setValuePass] = useState(null);
-  
+  const dispatch = useDispatch();
+useEffect(() => {
+  dispatch(setLogo({
+    logo: "black",
+  }))
+}, []);
   return (
     <S.Container>
       <S.Content>
