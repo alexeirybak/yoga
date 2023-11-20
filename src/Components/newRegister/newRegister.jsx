@@ -65,7 +65,6 @@ export function NewRegister({ setEditPass }) {
           <S.ModalFormLoginInput>
             <S.ModalInput
               type="password"
-              name="password"
               placeholder="Пароль"
               value={valuePass}
               onChange={handleChange}
@@ -74,7 +73,6 @@ export function NewRegister({ setEditPass }) {
           <S.ModalFormLoginInput>
             <S.ModalInput
               type="password"
-              name="repeat-password"
               placeholder="Повторите пароль"
               value={repeatPass}
               onChange={handleRepeatChange}

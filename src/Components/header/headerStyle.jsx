@@ -1,9 +1,7 @@
 import styled from "styled-components";
 
-export const LogoTitleDiv = styled.div`
-  display: flex;
-  justify-content: space-between;
-  padding-top: 36px;
+export const LogoTitle = styled.div`
+
   margin-right: 16px;
 `;
 export const UserDiv = styled.div`
@@ -11,7 +9,6 @@ export const UserDiv = styled.div`
   align-items: center;
   gap: 15px;
   cursor: pointer;
-  padding-top: 24px;
 `;
 export const LogoImg = styled.img`
   width: 182.96px;
@@ -30,12 +27,15 @@ export const UserNameSpan = styled.span`
   text-align: right;
   letter-spacing: -0.1px;
   font-feature-settings: "pnum" on, "lnum" on;
-  color: #000000;
+  color: ${props => props.color};
 `;
 
 export const HeadContentDiv = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  padding-top: 24px;
+
 `;
 export const HeaderUl = styled.ul`
 list-style-type: none;
@@ -45,7 +45,7 @@ text-align: right;
 `
 export const HeaderLi = styled.li`
 padding-top: 10px;
-  color: black;
+  color: ${props => props.color};
   font-size: 22px;
   margin-left: 18px;
   cursor: pointer;
@@ -54,3 +54,26 @@ padding-top: 10px;
 export const HeaderList = styled.div`
 display: block;
 `
+
+export const Enter = styled.button`
+  width: 77px;
+  height: 36px;
+  left: 1223px;
+  top: 24px;
+  background: #140d40;
+  border-radius: 46px;
+  font-family: "StratosSkyeng";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  font-feature-settings: "pnum" on, "lnum" on;
+  color: #ffffff;
+  &:hover {
+    background: #2d1f79;
+  }
+  &:active {
+    background: #3b29a2;
+  }
+`;

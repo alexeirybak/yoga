@@ -12,7 +12,7 @@ export const NewLogin = ({ setEdit }) => {
           <S.ModalFormLoginImg src="/logo.png" alt="logo" />
           <S.Text>Новый логин:</S.Text>
           <S.ModalFormLoginInput>
-            <S.ModalInput type="text" name="login" placeholder="Логин" />
+            <S.ModalInput type="text" placeholder="Логин" />
           </S.ModalFormLoginInput>
           <S.ModalFormLoginButtons>
             <S.ModalButtonEnter>Сохранить</S.ModalButtonEnter>

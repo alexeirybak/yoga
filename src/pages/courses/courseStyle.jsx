@@ -1,3 +1,4 @@
+
 import styled from "styled-components";
 
 export const Container = styled.div`
@@ -56,9 +57,8 @@ export const HeadContentBlock = styled.div`
   backdrop-filter: blur(14.5187px);
   background-size: contain;
   background-position: top;
-  background: cover;
   border-radius: 30px;
-  background-image: url(../../img/course.png);
+  background-image: url(${props => `../../img/course${props.id}.png`});
 `;
 
 export const SubTitleBlock = styled.div`
@@ -74,7 +74,7 @@ export const TitleText = styled.h1`
   letter-spacing: -0.8px;
   font-feature-settings: "pnum" on, "lnum" on;
   color: #000000;
-  opacity: 0.5;
+  // opacity: 0.5;
   margin-top: 30px;
   padding: 0;
 `;
@@ -96,15 +96,13 @@ export const ButtonPay = styled.button`
   color: rgb(255, 255, 255);
   border-color: rgb(249, 235, 255);
 `;
-export const TitleDirectionsText = styled.p`
+export const TitleDirectionsText = styled.div`
   font-family: "StratosSkyeng";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 40px;
-  line-height: 48px;
-  letter-spacing: -0.8px;
-  font-feature-settings: "pnum" on, "lnum" on;
-  color: #000000;
+  font-family: inherit;
+  font-size: 2rem;
+  margin-top: 75px;
+  margin-bottom: 22px;
+  color: #000;
 `;
 
 export const TitleLikeText = styled.p`
@@ -118,7 +116,7 @@ export const TitleLikeText = styled.p`
   color: #000000;
 `;
 
-export const LikesBlock = styled.div`
+export const LikesBlock = styled.ul`
   display: flex;
   gap: 87px;
   width: 1153px;
@@ -127,7 +125,7 @@ export const LikesBlock = styled.div`
   margin-bottom: 75px;
 `;
 
-export const LikesSubBlock = styled.div`
+export const LikesSubBlock = styled.li`
   display: flex;
   column-gap: 24px;
   width: 335px;
@@ -155,11 +153,7 @@ export const LikesText = styled.p`
 `;
 
 export const DirectionsBlock = styled.div`
-  display: flex;
-  gap: 168px;
-  width: 650px;
-  margin-top: 22px;
-  margin-left: 25px;
+column-count: 2;
 `;
 
 export const DirectionsSubBlock = styled.div`
