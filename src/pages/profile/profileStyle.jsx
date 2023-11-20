@@ -1,3 +1,4 @@
+
 import styled from "styled-components";
 
 export const Container = styled.div`
@@ -222,3 +223,4 @@ export const UserLogin = styled.input`
 
 export const CloseIcon = styled.div`
 `
+

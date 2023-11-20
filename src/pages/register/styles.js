@@ -22,7 +22,7 @@ export const ModalBlock = styled.div`
   opacity: 1;
 `
 
-export const ModalFormLogin = styled.form`
+export const ModalFormLogin = styled.div`
   width: 366px;
   height: 439px;
   background-color: #fff;
@@ -35,7 +35,7 @@ export const ModalFormLogin = styled.form`
   align-items: center;
 `
 
-export const ModalFormLoginLink = styled.a``
+
 
 export const ModalFormLoginTopImg = styled.img`
   position: absolute;

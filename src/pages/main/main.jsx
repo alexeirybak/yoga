@@ -1,6 +1,10 @@
+
+import { useDispatch, useSelector } from "react-redux";
 import * as S from "./mainStyled";
 import { Link } from "react-router-dom";
-
+import { useEffect } from "react";
+import { setLogo } from "../../store/slices/logoSlices";
+import { Header } from "../../Components/header/header";
 const courses = [
   { id: "1", img: "/img/profCard1.png" },
   { id: "2", img: "/img/profCard2.png" },
@@ -10,17 +14,16 @@ const courses = [
 ];
 
 export const Main = () => {
-
+const dispatch = useDispatch();
+useEffect(() => {
+  dispatch(setLogo({
+    logo: "white",
+  }))
+}, []);
       return (
     <S.Container>
       <S.Content>
-        <S.LogoTitle>
-          <S.Logo src="/img/logo.png" alt="logo" />
-            <Link to="/login222">
-              
-              <S.Enter>Войти</S.Enter>
-            </Link>
-        </S.LogoTitle>
+        <Header/>
         <S.HeaderContent>
           <S.SubTitle>
             <S.TitleText name="top">
@@ -46,5 +49,5 @@ export const Main = () => {
         </S.Button>
       </S.Content>
       </S.Container>
-      );
+      )
     }
