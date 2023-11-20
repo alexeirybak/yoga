@@ -33,7 +33,6 @@ export const Login = () => {
     .catch(console.error)
   }
 
-
   return (
     <S.Wrapper>
       <S.ContainerEnter>
@@ -58,12 +57,12 @@ export const Login = () => {
               />
             </S.ModalFormLoginInput>
             <S.ModalFormLoginButtons>
-              <S.ModalButtonEnter
-              onClick={handleLogin}
-              >
+              <S.ModalButtonEnter onClick={handleLogin}>
                 Войти
               </S.ModalButtonEnter>
-              <S.ModalBtnSignup><Link to="/register">Зарегистрироваться</Link></S.ModalBtnSignup>
+              <S.ModalBtnSignup>
+                <Link to="/register">Зарегистрироваться</Link>
+              </S.ModalBtnSignup>
 
             </S.ModalFormLoginButtons>
           </S.ModalFormLogin>

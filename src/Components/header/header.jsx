@@ -6,12 +6,13 @@ import { useAuth } from "../../hooks/use-auth";
 
 export function Header() {
   const {isAuth, email} = useAuth();
+
   const navigate = useNavigate();
   const [visible, setVisible] = useState(true);
-  const user = useSelector(state => state.user);
   const logo = useSelector(state => state.logo)
+  const email2 = localStorage.getItem("email")
+  console.log(email2);
   const toggleVisibility = () => setVisible(!visible);
-
   const ToMain = () => {
     navigate("/");
   }
@@ -25,25 +26,22 @@ export function Header() {
   return (
     <>
         <S.HeadContentDiv>
-          {isAuth ?           
+        <Link to="/">
+           {logo.logo === "white" ? <S.LogoImg src="/img/logo.png" alt="logo" /> : <S.LogoImg src="/img/logoBlack.png" alt="logo" />}
+        </Link>
+          {isAuth ?     
           <S.UserDiv>
-            <Link to="/profile">
-              <S.UserPhotoImg src="/img/Ellipse.png" alt="userphoto" />
-            </Link>
+            <S.UserPhotoImg src="/img/Ellipse.png" alt="userphoto" />
             <S.UserNameSpan onClick={toggleVisibility}>
-              {user} ↓
+              {email2} ↓
             </S.UserNameSpan>
             </S.UserDiv> : 
                     <S.LogoTitle>
-                    <Link to="/">
-                        {logo.logo === "white" ? <S.LogoImg src="/img/logo.png" alt="logo" /> : <S.LogoImg src="/img/logoBlack.png" alt="logo" />}
-                    </Link>
-                    <Link to="/login">
-                    <S.Enter>Войти</S.Enter>
-        </Link>
-                      </S.LogoTitle>  
+                      <Link to="/login">
+                        <S.Enter>Войти</S.Enter>
+                      </Link>
+                    </S.LogoTitle>  
             }
-
             </S.HeadContentDiv>
             {!visible && (
                             <S.HeaderList>
