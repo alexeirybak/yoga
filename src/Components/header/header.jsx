@@ -37,13 +37,11 @@ export function Header() {
             </S.UserNameSpan>
             </S.UserDiv> : 
                     <S.LogoTitle>
-
-                    <Link to="/login">
-                    <S.Enter>Войти</S.Enter>
-        </Link>
-                      </S.LogoTitle>  
+                      <Link to="/login">
+                        <S.Enter>Войти</S.Enter>
+                      </Link>
+                    </S.LogoTitle>  
             }
-
             </S.HeadContentDiv>
             {!visible && (
                             <S.HeaderList>

@@ -1,9 +1,7 @@
 import styled from "styled-components";
 
 export const LogoTitle = styled.div`
-  display: flex;
-  justify-content: space-between;
-  padding-top: 36px;
+
   margin-right: 16px;
 `;
 export const UserDiv = styled.div`
@@ -37,6 +35,7 @@ export const HeadContentDiv = styled.div`
   justify-content: space-between;
   align-items: center;
   padding-top: 24px;
+
 `;
 export const HeaderUl = styled.ul`
 list-style-type: none;
