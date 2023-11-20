@@ -1,4 +1,5 @@
 
+
 import * as S from "./courseStyle";
 import { Header } from "../../Components/header/header";
 import { useAuth } from "../../hooks/use-auth";

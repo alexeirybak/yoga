@@ -1,3 +1,4 @@
+
 import { useDispatch, useSelector } from "react-redux";
 import * as S from "./mainStyled";
 import { Link } from "react-router-dom";

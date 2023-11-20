@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from 'react'
 import * as S from './styles'
 import { Link, useNavigate } from 'react-router-dom';
@@ -32,12 +33,14 @@ export const Login = () => {
     .catch(console.error)
   }
 
+
   return (
     <S.Wrapper>
       <S.ContainerEnter>
       <S.ModalFormLoginTopImg src="/logo-top.png" alt="logo" />
         <S.ModalBlock>
           <S.ModalFormLogin action="#">
+
             <Link to="/">
               <S.ModalFormLoginImg src="/logo.png" alt="logo" />
             </Link>
@@ -61,6 +64,7 @@ export const Login = () => {
                 Войти
               </S.ModalButtonEnter>
               <S.ModalBtnSignup><Link to="/register">Зарегистрироваться</Link></S.ModalBtnSignup>
+
             </S.ModalFormLoginButtons>
           </S.ModalFormLogin>
         </S.ModalBlock>
