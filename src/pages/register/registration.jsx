@@ -22,8 +22,7 @@ export function Register() {
   }))
 }, []);
   const handleRegister = () => {
-
-    if(password === dublicatePass) {
+    // if(password === dublicatePass) {
       const auth = getAuth();
       createUserWithEmailAndPassword(auth, newEmail, password)
       .then(({user}) => {
@@ -33,11 +32,10 @@ export function Register() {
           token: user.accessToken,
           id: user.uid,
         }))
-
         navigate('/');
       })
       .catch(console.error)
-    }
+    // }
     // if(password !== dublicatePass) {
     //   setError('Пароли не совпадают')
     // }
