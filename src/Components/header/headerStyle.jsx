@@ -56,4 +56,4 @@ display: block;
 `
 
 
-export const Enter = styled.button`
+export const Enter = styled.button``
