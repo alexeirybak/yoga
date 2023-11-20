@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const LogoTitleDiv = styled.div`
+export const LogoTitle = styled.div`
   display: flex;
   justify-content: space-between;
   padding-top: 36px;
@@ -11,7 +11,6 @@ export const UserDiv = styled.div`
   align-items: center;
   gap: 15px;
   cursor: pointer;
-  padding-top: 24px;
 `;
 export const LogoImg = styled.img`
   width: 182.96px;
@@ -36,6 +35,8 @@ export const UserNameSpan = styled.span`
 export const HeadContentDiv = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  padding-top: 24px;
 `;
 export const HeaderUl = styled.ul`
 list-style-type: none;
@@ -55,7 +56,7 @@ export const HeaderList = styled.div`
 display: block;
 `
 
-export const EnterButton = styled.button`
+export const Enter = styled.button`
   width: 77px;
   height: 36px;
   left: 1223px;
