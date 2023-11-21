@@ -1,3 +1,4 @@
+
 import {createSlice} from "@reduxjs/toolkit";
 
 const initialState = {
@@ -18,5 +19,4 @@ const logoSlice = createSlice({
 });
 
 export const {setLogo, removeLogo} = logoSlice.actions;
-
 export default logoSlice.reducer;
