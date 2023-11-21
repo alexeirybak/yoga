@@ -22,9 +22,8 @@ export const Login = () => {
 
     signInWithEmailAndPassword(auth, email, password)
     .then(({user}) => {
-      console.log(user);
       dispatch(setUser({
-        email: user.email,
+        userMail: user.email,
         id: user.uid,
         token: user.accessToken,
       }))
