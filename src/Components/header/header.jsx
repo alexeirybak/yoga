@@ -18,7 +18,8 @@ export function Header() {
     navigate("/");
   }
   const Exit = () => {
-    dispatch(removeUser)
+    dispatch(removeUser())
+    setVisible(!visible)
     navigate("/");
   };
   const ToProfile = () => {

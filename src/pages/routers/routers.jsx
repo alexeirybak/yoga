@@ -5,6 +5,7 @@ import { Login } from "../login/login";
 import Course from "../courses/course";
 import Profile from "../profile/profile";
 import {Register} from '../register/registration'
+import { Trainings } from "../trainings";
 export const AppRoutes = () => {
     return (
     <>
@@ -14,6 +15,7 @@ export const AppRoutes = () => {
             <Route path="/register" element={<Register />} />
             <Route path="/course/:id" element={<Course />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/training" element={<Trainings />} />
     </Routes>
     </>
     );
