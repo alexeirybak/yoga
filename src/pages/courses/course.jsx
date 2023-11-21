@@ -1,15 +1,19 @@
+
 import { textAboutTraining } from "../../helpers/coursesDescriptions";
 import { useParams } from "react-router-dom";
+
 import * as S from "./courseStyle";
 import { Header } from "../../Components/header/header";
 import { useAuth } from "../../hooks/use-auth";
 import { useNavigate } from "react-router-dom";
+
 
 export default function Course() {
   const { isAuth, email } = useAuth();
   const navigate = useNavigate();
   const { id } = useParams();
   const course = textAboutTraining.find(course => course.id === Number(id));
+
 
   return (
     <S.Container>
