@@ -37,7 +37,7 @@ useEffect(() => {
         </S.HeaderContent>
         <S.Choice>
           {courses.map((i) => (
-            <Link key={i.id} to={`courses/${i.id}`}>
+            <Link key={i.id} to={`course/${i.id}`}>
               <S.ProfCard src={i.img} alt="prof_card" />
             </Link>
           ))}
