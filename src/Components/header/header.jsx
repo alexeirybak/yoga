@@ -6,13 +6,12 @@ import { useAuth } from "../../hooks/use-auth";
 import { removeUser } from "../../store/slices/userSlices";
 
 export function Header() {
-  const {isAuth, email} = useAuth();
+  const {isAuth} = useAuth();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [visible, setVisible] = useState(true);
   const logo = useSelector(state => state.logo)
   const email2 = localStorage.getItem("email")
-  console.log(email2);
   const toggleVisibility = () => setVisible(!visible);
   const ToMain = () => {
     navigate("/");
