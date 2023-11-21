@@ -6,14 +6,23 @@ import * as S from "./courseStyle";
 import { Header } from "../../Components/header/header";
 import { useAuth } from "../../hooks/use-auth";
 import { useNavigate } from "react-router-dom";
+import { setLogo } from "../../store/slices/logoSlices";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 
 
 export default function Course() {
   const { isAuth, email } = useAuth();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const { id } = useParams();
   const course = textAboutTraining.find(course => course.id === Number(id));
 
+  useEffect(() => {
+    dispatch(setLogo({
+    logo: "black",
+    }))
+  }, []);
 
   return (
     <S.Container>

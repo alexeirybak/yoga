@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import * as S from "./headerStyle";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useAuth } from "../../hooks/use-auth";
+import { removeUser } from "../../store/slices/userSlices";
 
 export function Header() {
   const {isAuth, email} = useAuth();
-
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [visible, setVisible] = useState(true);
   const logo = useSelector(state => state.logo)
@@ -17,7 +18,8 @@ export function Header() {
     navigate("/");
   }
   const Exit = () => {
-    navigate("/login");
+    dispatch(removeUser)
+    navigate("/");
   };
   const ToProfile = () => {
     navigate("/profile");
@@ -32,7 +34,7 @@ export function Header() {
           {isAuth ?     
           <S.UserDiv>
             <S.UserPhotoImg src="/img/Ellipse.png" alt="userphoto" />
-            <S.UserNameSpan onClick={toggleVisibility}>
+            <S.UserNameSpan color={logo.logo} onClick={toggleVisibility}>
               {email2} ↓
             </S.UserNameSpan>
             </S.UserDiv> : 
@@ -46,9 +48,9 @@ export function Header() {
             {!visible && (
                             <S.HeaderList>
             <S.HeaderUl>
-            <S.HeaderLi onClick={ToMain}>На главную</S.HeaderLi>
-            <S.HeaderLi onClick={ToProfile}>Профиль</S.HeaderLi>
-            <S.HeaderLi onClick={Exit}>Выход</S.HeaderLi>
+            <S.HeaderLi color={logo.logo} onClick={ToMain}>На главную</S.HeaderLi>
+            <S.HeaderLi color={logo.logo} onClick={ToProfile}>Профиль</S.HeaderLi>
+            <S.HeaderLi color={logo.logo} onClick={Exit}>Выход</S.HeaderLi>
             </S.HeaderUl>
                         </S.HeaderList>
         )}
