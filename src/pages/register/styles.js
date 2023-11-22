@@ -1,18 +1,18 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 export const Wrapper = styled.div`
   width: 100%;
   min-height: 100%;
   overflow: hidden;
-`
+`;
 
 export const ContainerEnter = styled.div`
   max-width: 100%;
   height: 100vh;
   margin: 0 auto;
   position: relative;
-  background-color: #271A58;
-`
+  background-color: #271a58;
+`;
 
 export const ModalBlock = styled.div`
   position: absolute;
@@ -20,7 +20,7 @@ export const ModalBlock = styled.div`
   left: calc(50% - (366px / 2));
   top: calc(50% - (439px / 2));
   opacity: 1;
-`
+`;
 
 export const ModalFormLogin = styled.div`
   width: 366px;
@@ -33,9 +33,7 @@ export const ModalFormLogin = styled.div`
   justify-content: space-between;
   padding: 43px 47px 47px 41px;
   align-items: center;
-`
-
-
+`;
 
 export const ModalFormLoginTopImg = styled.img`
   position: absolute;
@@ -44,7 +42,7 @@ export const ModalFormLoginTopImg = styled.img`
   cursor: pointer;
 `;
 
-export const ModalFormLoginImg = styled.img``
+export const ModalFormLoginImg = styled.img``;
 
 export const ModalFormLoginInput = styled.div`
   width: 278px;
@@ -52,9 +50,9 @@ export const ModalFormLoginInput = styled.div`
   display: flex;
   flex-direction: column;
   row-gap: 20px;
-`
+`;
 
-export const ModalFormLoginButtons = styled(ModalFormLoginInput)``
+export const ModalFormLoginButtons = styled(ModalFormLoginInput)``;
 
 export const ModalInput = styled.input`
   height: 52px;
@@ -70,9 +68,9 @@ export const ModalInput = styled.input`
     letter-spacing: -0.054px;
     color: #d0cece;
   }
-`
+`;
 
-export const ModalInputConfirmPassword = styled(ModalInput)``
+export const ModalInputConfirmPassword = styled(ModalInput)``;
 
 export const ModalBtnSignup = styled.button`
   height: 52px;
@@ -94,4 +92,19 @@ export const ModalBtnSignup = styled.button`
   &:active {
     background-color: #d9d9d9;
   }
-`
+`;
+
+export const ErrorMessage = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  color: rgb(255, 128, 113);
+  font-size: 1rem;
+  font-weight: 400;
+  position: absolute;
+  top: 80px;
+  left: 5px;
+  text-align: center;
+  margin-top: 10px;
+`;

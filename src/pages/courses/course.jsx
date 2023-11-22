@@ -1,22 +1,35 @@
 
+import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { useParams, useNavigate } from "react-router-dom";
 import { textAboutTraining } from "../../helpers/coursesDescriptions";
-import { useParams } from "react-router-dom";
-
-import * as S from "./courseStyle";
 import { Header } from "../../Components/header/header";
 import { useAuth } from "../../hooks/use-auth";
-import { useNavigate } from "react-router-dom";
 import { setLogo } from "../../store/slices/logoSlices";
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { CourseAppointment } from "../../Components/courseAppointment/courseAppoinment";
+import * as S from "./courseStyle";
 
 
-export default function Course() {
+export const Course = () => {
   const { isAuth, email } = useAuth();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { id } = useParams();
-  const course = textAboutTraining.find(course => course.id === Number(id));
+  const course = textAboutTraining.find((course) => course.id === Number(id));
+
+  const [showCourseAppointModal, setShowCourseAppointModal] = useState(false);
+
+  useEffect(() => {
+    dispatch(setLogo({ logo: "black" }));
+  }, [dispatch]);
+
+  const handlePopUp = () => {
+    setShowCourseAppointModal(true);
+  };
+
+  const handleModalClose = () => {
+    setShowCourseAppointModal(false);
+  };
 
   useEffect(() => {
     dispatch(setLogo({
@@ -31,7 +44,6 @@ export default function Course() {
         <S.HeadContentBlock id={id}>
           <S.SubTitleBlock>
             <S.TitleText>{course.title}</S.TitleText>
-            <S.ButtonPay >Купить курс</S.ButtonPay>
           </S.SubTitleBlock>
         </S.HeadContentBlock>
 
@@ -71,9 +83,13 @@ export default function Course() {
                 здоровье и радость!
               </S.FooterText>
             </S.FooterTextBlock>
-            <S.SignUpTrainingButton>
+            <S.SignUpTrainingButton onClick={handlePopUp}>
               Записаться на тренировку
             </S.SignUpTrainingButton>
+            <CourseAppointment
+              isOpen={showCourseAppointModal} 
+              onClose={handleModalClose} 
+            />
           </S.FooterSubBlock>
           <S.HandsetImg src="/img/phone.png" alt="Handset" />
         </S.FooterContentBlock>

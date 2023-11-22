@@ -1,78 +1,139 @@
-import { useEffect, useState } from 'react';
-import * as S from './styles';
-import { useDispatch, useSelector } from 'react-redux';
+import { useEffect, useState } from "react";
+import * as S from "./styles";
+import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "../../store/slices/userSlices";
 import { Link, useNavigate } from "react-router-dom";
 import { getAuth, createUserWithEmailAndPassword } from "@firebase/auth";
-import { setLogo } from '../../store/slices/logoSlices';
+import { setLogo } from "../../store/slices/logoSlices";
 
 export function Register() {
-  const [newEmail, setNewEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [dublicatePass, setDublicatePass] = useState('');
+  const [newEmail, setNewEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [dublicatePass, setDublicatePass] = useState("");
   const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
-  const navigate  = useNavigate()
+  const navigate = useNavigate();
+
+  // useEffect(() => {
+  //   setError(null);
+  // }, [newEmail, password, dublicatePass]);
   useEffect(() => {
-    setError(null);
-  }, [newEmail, password, dublicatePass]);
-  useEffect(() => {
-  dispatch(setLogo({
-  logo: "white",
-  }))
-}, []);
-  const handleRegister = () => {
-    // if(password === dublicatePass) {
-      const auth = getAuth();
-      createUserWithEmailAndPassword(auth, newEmail, password)
-      .then(({user}) => {
-        console.log(user);
-        dispatch(setUser({
-          userMail: user.email,
-          token: user.accessToken,
-          id: user.uid,
-        }))
-        navigate('/');
+    dispatch(
+      setLogo({
+        logo: "white",
       })
-      .catch(console.error)
-    // }
-    // if(password !== dublicatePass) {
-    //   setError('Пароли не совпадают')
-    // }
-  }
+    );
+  }, []);
+
+  const handleEmail = (event) => {
+    const emailValidation = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+    setNewEmail(event.target.value);
+    if (!emailValidation.test(event.target.value)) {
+      setError("Проверяйте вводимые символы");
+    } else {
+      setError(null);
+    }
+  };
+
+  const handlePassword = (event) => {
+    if (event.target.value.length < 6) {
+      setError("Пароль должен быть не менее 6 знаков");
+    } else {
+      setError(null);
+    }
+    setPassword(event.target.value);
+  };
+
+  const handleRepeatPassword = (event) => {
+    if (event.target.value.length < 6) {
+      setError("Пароль должен быть не менее 6 знаков");
+    } else {
+      setError(null);
+    }
+    setDublicatePass(event.target.value);
+  };
+
+  const handleRegister = (event) => {
+    event.preventDefault();
+
+    if (!newEmail) {
+      setError("Введите email");
+      return;
+    }
+
+    if (!password) {
+      setError("Введите пароль");
+      return;
+    }
+
+    if (password !== dublicatePass) {
+      setError("Пароли не совпадают. Попробуйте еще раз");
+      setIsLoading(false);
+    } else {
+      setError("");
+      setPassword(dublicatePass);
+      setIsLoading(true);
+    }
+
+    const auth = getAuth();
+    const createUser = async () => {
+      try {
+        const { user } = await createUserWithEmailAndPassword(
+          auth,
+          newEmail,
+          password
+        );
+        dispatch(
+          setUser({
+            userMail: user.email,
+            token: user.accessToken,
+            id: user.uid,
+          })
+        );
+        navigate("/");
+      } catch (error) {
+        setError(error.message);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    createUser();
+  };
+
   return (
     <S.Wrapper>
       <S.ContainerEnter>
-      <S.ModalFormLoginTopImg src="/logo-top.png" alt="logo" />
+        <S.ModalFormLoginTopImg src="/logo-top.png" alt="logo" />
         <S.ModalBlock>
           <S.ModalFormLogin>
             <Link to="/">
-            <S.ModalFormLoginImg src="/logo.png" alt="logo" />
+              <S.ModalFormLoginImg src="/logo.png" alt="logo" />
             </Link>
+            {error && <S.ErrorMessage>{error}</S.ErrorMessage>}
             <S.ModalFormLoginInput>
-              <S.ModalInput 
-              type='email' 
-              placeholder='Почта'
-              value={newEmail} 
-              onChange={(e) => setNewEmail(e.target.value)} 
+              <S.ModalInput
+                type="email"
+                placeholder="Почта"
+                value={newEmail}
+                onChange={handleEmail}
               />
               <S.ModalInput
-                type='password'
-                placeholder='Пароль'
-                value={password} 
-                onChange={(e) => setPassword(e.target.value)}
+                type="password"
+                placeholder="Пароль"
+                value={password}
+                onChange={handlePassword}
               />
-                <S.ModalInputConfirmPassword
-                  type='password'
-                  placeholder='Повторите пароль'
-                  value={dublicatePass} 
-                  onChange={(e) => setDublicatePass(e.target.value)}
-                />
-                        {error ? <p style={{color: "red"}}>{error};</p> : null}
+              <S.ModalInputConfirmPassword
+                type="password"
+                placeholder="Повторите пароль"
+                value={dublicatePass}
+                onChange={handleRepeatPassword}
+              />
             </S.ModalFormLoginInput>
             <S.ModalFormLoginButtons>
-              <S.ModalBtnSignup onClick={handleRegister}>
-                Зарегистрироваться
+              <S.ModalBtnSignup disabled={isLoading} onClick={handleRegister}>
+                {isLoading ? "Происходит регистрация..." : "Зарегистрироваться"}
               </S.ModalBtnSignup>
             </S.ModalFormLoginButtons>
           </S.ModalFormLogin>

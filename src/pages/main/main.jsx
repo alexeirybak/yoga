@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { setLogo } from "../../store/slices/logoSlices";
 import { Header } from "../../Components/header/header";
-
+import { useAuth } from "../../hooks/use-auth";
 import firebase from "firebase/compat/app";
 import "firebase/compat/database";
 

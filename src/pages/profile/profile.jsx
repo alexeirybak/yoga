@@ -13,7 +13,7 @@ const courses = [
   { id: "2", img: "/img/profCard2.png" },
 ];
 
-export default function Profile() {
+export const Profile = () => {
   const [edit, setEdit] = useState(false);
   const [editPass, setEditPass] = useState(false);
   const [valuePass, setValuePass] = useState(null);
