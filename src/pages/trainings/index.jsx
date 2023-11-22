@@ -1,6 +1,8 @@
 import { useParams } from 'react-router-dom';
 import {Header} from '../../Components/header/header';
 import * as S from "./styles";
+import { useState } from 'react';
+import ProgressInput from '../../Components/ProgressInput/ProgressInput';
 
 export const Trainings = () => {
 
@@ -9,11 +11,12 @@ export const Trainings = () => {
   }
 
   //мокап тренировок
-  const yogaWorkouts = [{
+  const [yogaWorkouts, setYogaWorkouts] = useState([{
     id: 0,
     name: 'Утренняя практика',
     type: 'Йога на каждый день / 1 день',
     exercise: [{
+      id: 1,
       name: 'Приветствие солнца',
       repeats: 10,
       repeats_done: 5
@@ -26,16 +29,19 @@ export const Trainings = () => {
     name: 'Красота и здоровье',
     type: 'Йога на каждый день / 2 день',
     exercise: [{
+      id: 1,
       name: 'Наклон вперед',
       repeats: 10,
       repeats_done: 3
     },
     {
+      id: 2,
       name: 'Наклон назад',
       repeats: 10,
       repeats_done: 5
     },
     {
+      id: 3,
       name: 'Поднятие ног, согнутых в коленях',
       repeats: 5,
       repeats_done: 2
@@ -48,26 +54,31 @@ export const Trainings = () => {
       name: 'Асаны стоя',
       type: 'Йога на каждый день / 3 день',
       exercise: [{
+        id: 1,
         name: 'Наклон к правой ноге',
         repeats: 10,
         repeats_done: 0
       },
       {
+        id: 2,
         name: 'Наклон к левой ноге',
         repeats: 10,
         repeats_done: 5
       },
       {
+        id: 3,
         name: 'Наклон к согнутой правой ноге',
         repeats: 10,
         repeats_done: 2
       },
       {
+        id: 4,
         name: 'Наклон к согнутой левой ноге',
         repeats: 10,
         repeats_done: 5
       },
       {
+        id: 5,
         name: 'Асана стоя',
         repeats: 10,
         repeats_done: 5
@@ -80,21 +91,25 @@ export const Trainings = () => {
       name: 'Растягиваем мышцы бедра',
       type: 'Йога на каждый день / 4 день',
       exercise: [{
+        id: 1,
         name: 'Сесть на пятки с носками от себя',
         repeats: 5,
         repeats_done: 0
       },
       {
+        id: 2,
         name: 'Сесть на пятки с носками на себя',
         repeats: 5,
         repeats_done: 5
       },
       {
+        id: 3,
         name: 'Отпустить колено на пол из позы лотоса',
         repeats: 10,
         repeats_done: 2
       },
       {
+        id: 4,
         name: 'Отпустить колено на пол из позы лотоса с соединенными стопами',
         repeats: 10,
         repeats_done: 5
@@ -107,23 +122,26 @@ export const Trainings = () => {
       name: 'Гибкость спины',
       type: 'Йога на каждый день / 5 день',
       exercise: [{
+        id: 1,
         name: 'Округляем грудную клетку при выдохе',
         repeats: 10,
         repeats_done: 0
       },
       {
+        id: 2,
         name: 'Тянем левую руку в правую сторону',
         repeats: 20,
         repeats_done: 5
       },
       {
+        id: 3,
         name: 'Тянем правую руку в левую сторону (20 повторений)',
         repeats: 20,
         repeats_done: 2
       }],
       video_file: 'https://youtu.be/MIvcMapie_A',
       isFinished: false
-  }]
+  }]);
 
   // костыль для цвета прогрессбара
   const colors = [{
@@ -147,10 +165,6 @@ export const Trainings = () => {
     light: '#FFF2E0'
   },
   ]
-  // const getColor = ({index}) => {
-  //   return colors[index].main
-  // }
-  // console.log(getColor(1));
 
   const params = useParams();
   console.log(params); // { id: "1" }
@@ -160,9 +174,23 @@ export const Trainings = () => {
   // тут будущий запрос в БД на данные про тренировке
   // const { data, isLoading, error } = useGetSelectedTrainingQuery({ id: params.id });
 
+
+  const [inputOnShow, setInputOnShow] = useState(false);
+
+  const closeInput = () => {
+    setInputOnShow(false);
+  }
+
+  const progressForm = (
+    <ProgressInput closeInput={closeInput} yogaWorkouts={yogaWorkouts} setYogaWorkouts={setYogaWorkouts}></ProgressInput>
+  )
+
+
   return (
     <S.Wrapper>
-      <Header/>
+      <S.HeaderWrapper>
+        <Header/>
+      
       <S.ContentBlock>
         <S.ContentVideoBlock>
           <S.VideoHeader>Йога</S.VideoHeader>
@@ -180,7 +208,7 @@ export const Trainings = () => {
                 <S.ExerciseListItem key={index}>{exe.name} ({exe.repeats} повторений)</S.ExerciseListItem>
               ))}
             </S.ExercisesList>
-            <S.FillInProgress>Заполнить свой прогресс</S.FillInProgress>
+            <S.FillInProgress onClick={() => setInputOnShow(true)}>Заполнить свой прогресс</S.FillInProgress>
           </S.ExerciseDescription>
           <S.Progress>
             <S.ProgressHeader>Мой прогресс по тренировке</S.ProgressHeader>
@@ -199,6 +227,8 @@ export const Trainings = () => {
           </S.Progress>
         </S.ExerciseBlock>
       </S.ContentBlock>
+      {inputOnShow ? progressForm : null}
+      </S.HeaderWrapper>
     </S.Wrapper>
   );
 };

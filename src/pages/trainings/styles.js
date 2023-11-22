@@ -8,112 +8,13 @@ export const Wrapper = styled.div`
   background: #fafafa;
 `;
 
-export const TopContainer = styled.div`
-  min-height: 100vh;
-  width: 100%;
-  display: flex;
-  flex-flow: column;
-  align-items: center;
-  background: rgb(250, 250, 250);
-`;
+export const HeaderWrapper = styled.div`
+width: 1160px;
+display: flex;
+flex-flow: column;
+justify-content: space-between;
+`
 
-export const LogoBlock = styled.div`
-  position: absolute;
-  top: 2rem;
-  left: 5rem;
-`;
-
-export const Logo = styled.img`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-`;
-
-export const PersonBlock = styled.div`
-  position: absolute;
-  top: 2rem;
-  right: 5rem;
-  width: 12rem;
-  height: 3rem;
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 1rem;
-  z-index: 9;
-`;
-
-export const PersonPlace = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
-export const PersonDetails = styled.div`
-  cursor: pointer;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-`;
-
-export const PersonIcon = styled.div`
-  width: 3rem;
-  height: 3rem;
-  border-radius: 50%;
-  background-color: rgb(105, 105, 105);
-`;
-
-export const PersonName = styled.span`
-  min-width: 4rem;
-  max-width: 10rem;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  margin-left: 15px;
-  margin-right: 12px;
-  font-size: 1.5rem;
-  color: rgb(0, 0, 0);
-`;
-
-export const PersonMenuBlock = styled.div`
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-`;
-
-export const PersonMenu = styled.img`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #fff;
-`;
-
-export const MenuList = styled.div`
-  display: flex;
-  flex-flow: column;
-  justify-content: flex-end;
-  position: absolute;
-  top: 2rem;
-  right: 0rem;
-  width: 100%;
-  overflow: hidden;
-  transition: height 0.3s ease-in-out 0s;
-  height: ${({ $menuVisible }) => ($menuVisible ? "140px" : "0")};
-`;
-
-export const MenuItem = styled.a`
-  width: inherit;
-  text-align: right;
-  cursor: pointer;
-  font-size: 1.5rem;
-  line-height: 1.7;
-  color: rgb(0, 0, 0);
-
-  &:hover {
-    color: #c9c9c9;
-  }
-`;
 
 export const ContentBlock = styled.div`
   min-height: 100vh;
@@ -169,6 +70,7 @@ export const ExerciseDescription = styled.div`
 
 export const ExerciseDescriptionHeader = styled.div`
   font-size: 2rem;
+  color: black;
 `;
 
 export const ExercisesList = styled.ul`
