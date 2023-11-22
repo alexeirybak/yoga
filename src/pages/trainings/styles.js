@@ -203,6 +203,7 @@ export const Progress = styled.div`
   padding: 32px 44px;
   border-radius: 30px;
   background-color: rgb(244, 245, 246);
+  color: black;
 `;
 
 export const ProgressHeader = styled.div`
@@ -237,18 +238,19 @@ const ProgressExerciseBarMixin = css`
 
 export const FirstExerciseBar = styled.div`
   ${ProgressExerciseBarMixin}
-  border: 2px solid rgb(154, 72, 241);
+  background-color: ${({ $progColorLight }) => ($progColorLight)};
+  border: 2px solid ${({ $progColorMain }) => ($progColorMain)};
 `;
 
-export const SecondExerciseBar = styled.div`
-  ${ProgressExerciseBarMixin}
-  border: 2px solid rgb(255, 109, 0);
-`;
+// export const SecondExerciseBar = styled.div`
+//   ${ProgressExerciseBarMixin}
+//   border: 2px solid rgb(255, 109, 0);
+// `;
 
-export const ThirdExerciseBar = styled.div`
-  ${ProgressExerciseBarMixin}
-  border: 2px solid rgb(86, 94, 239);
-`;
+// export const ThirdExerciseBar = styled.div`
+//   ${ProgressExerciseBarMixin}
+//   border: 2px solid rgb(86, 94, 239);
+// `;
 
 const ProgressFilledInMixin = css`
   color: rgb(255, 255, 255);
@@ -258,22 +260,22 @@ const ProgressFilledInMixin = css`
 
 export const FirstFilledIn = styled.div`
   ${ProgressFilledInMixin}
-  background: rgb(154, 72, 241);
-  width: 100%;
+  background: ${({ $progColorMain }) => ($progColorMain)};
+  width: ${({ $width }) => ($width)}%;
 `;
 
-export const SecondFilledIn = styled.div`
-  ${ProgressFilledInMixin}
-  background: rgb(255, 109, 0);
-  width: 60%;
-`;
+// export const SecondFilledIn = styled.div`
+//   ${ProgressFilledInMixin}
+//   background: rgb(255, 109, 0);
+//   width: 60%;
+// `;
 
-export const ThirdFilledIn = styled.div`
-  ${ProgressFilledInMixin}
-  background: rgb(86, 94, 239);
-  width: 20%;
-  color: rgb(154, 72, 241);
-`;
+// export const ThirdFilledIn = styled.div`
+//   ${ProgressFilledInMixin}
+//   background: rgb(86, 94, 239);
+//   width: 20%;
+//   color: rgb(154, 72, 241);
+// `;
 
 export const ProgressResult = styled.span`
   margin-left: 4rem;
