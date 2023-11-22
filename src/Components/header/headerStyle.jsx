@@ -52,7 +52,6 @@ padding-top: 10px;
 
 `;
 export const HeaderList = styled.div`
-display: block;
 `
 
 export const Enter = styled.button`

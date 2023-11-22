@@ -12,8 +12,8 @@ export function NewRegister({ setEditPass }) {
   };
 
   const handleChange = (event) => {
-    if (event.target.value.length < 8) {
-      setError("Пароль должен быть не менее 8 знаков");
+    if (event.target.value.length < 6) {
+      setError("Пароль должен быть не менее 6 знаков");
     } else {
       setError("");
     }
@@ -21,8 +21,8 @@ export function NewRegister({ setEditPass }) {
   };
 
   const handleRepeatChange = (event) => {
-    if (event.target.value.length < 8) {
-      setError("Пароль должен быть не менее 8 знаков");
+    if (event.target.value.length < 6) {
+      setError("Пароль должен быть не менее 6 знаков");
     } else {
       setError("");
     }
@@ -44,8 +44,6 @@ export function NewRegister({ setEditPass }) {
 
     if (valuePass !== repeatPass) {
       setError("Пароли не совпадают. Попробуйте еще раз");
-      console.log(valuePass);
-      console.log(repeatPass);
       setIsLoading(false);
     } else {
       setError("");
