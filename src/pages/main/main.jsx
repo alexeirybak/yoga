@@ -1,10 +1,11 @@
 
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import * as S from "./mainStyled";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { setLogo } from "../../store/slices/logoSlices";
 import { Header } from "../../Components/header/header";
+import { useAuth } from "../../hooks/use-auth";
 const courses = [
   { id: "1", img: "/img/profCard1.png" },
   { id: "2", img: "/img/profCard2.png" },

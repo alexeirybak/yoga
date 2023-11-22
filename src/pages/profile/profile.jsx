@@ -7,7 +7,7 @@ import { NewRegister } from "../../Components/newRegister/newRegister";
 import { setLogo } from "../../store/slices/logoSlices";
 import { useDispatch } from "react-redux";
 
-export default function Profile() {
+export const Profile = () => {
   const [edit, setEdit] = useState(false);
   const [editPass, setEditPass] = useState(false);
   const [valuePass, setValuePass] = useState(null);
