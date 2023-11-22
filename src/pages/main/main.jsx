@@ -9,11 +9,11 @@ import { Header } from "../../Components/header/header";
 import firebase from "firebase/compat/app";
 import "firebase/compat/database";
 
-export function useDataBase(refURL) {
+export function useDataBase() {
   const dispatch = useDispatch();
   firebase
     .database()
-    .ref(refURL)
+    .ref("courses/ab1")
     .once("value")
     .then((snapshot) => {
       const data = snapshot.val();
@@ -52,6 +52,7 @@ useEffect(() => {
     logo: "white",
   }))
 }, []);
+useDataBase()
 // const { data=[], isLoading, isError, isSuccess, error, refetch } = useGetLikeSongsQuery(Mass)
 
 

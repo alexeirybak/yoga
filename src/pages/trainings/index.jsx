@@ -169,7 +169,7 @@ export const Trainings = () => {
   ]
 
   const params = useParams();
-  console.log(params); // { id: "1" }
+  // console.log(params); // { id: "1" }
 
   const trainingChosen = yogaWorkouts.find(training => training.id === Number(params.id));
 
