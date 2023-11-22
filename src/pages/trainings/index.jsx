@@ -1,8 +1,10 @@
 import { useParams } from 'react-router-dom';
 import {Header} from '../../Components/header/header';
 import * as S from "./styles";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ProgressInput from '../../Components/ProgressInput/ProgressInput';
+import { setLogo } from '../../store/slices/logoSlices';
+import { useDispatch } from 'react-redux';
 
 export const Trainings = () => {
 
@@ -184,7 +186,12 @@ export const Trainings = () => {
   const progressForm = (
     <ProgressInput closeInput={closeInput} yogaWorkouts={yogaWorkouts} setYogaWorkouts={setYogaWorkouts}></ProgressInput>
   )
-
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(setLogo({
+      logo: "black",
+    }))
+  }, []);
 
   return (
     <S.Wrapper>

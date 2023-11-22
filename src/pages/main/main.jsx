@@ -5,7 +5,37 @@ import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { setLogo } from "../../store/slices/logoSlices";
 import { Header } from "../../Components/header/header";
-import { useAuth } from "../../hooks/use-auth";
+
+import firebase from "firebase/compat/app";
+import "firebase/compat/database";
+
+export function useDataBase(refURL) {
+  const dispatch = useDispatch();
+  firebase
+    .database()
+    .ref(refURL)
+    .once("value")
+    .then((snapshot) => {
+      const data = snapshot.val();
+      console.log(data);
+      // dispatch(
+      //   setCourses({
+      //     description: data.description,
+      //     directions: data.directions,
+      //     fit: data.fit,
+      //     id: data._id,
+      //     img: data.img,
+      //     name: data.name,
+      //     workouts: data.workouts,
+      //   })
+      // );
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+}
+
+
 const courses = [
   { id: "1", img: "/img/profCard1.png" },
   { id: "2", img: "/img/profCard2.png" },
@@ -15,12 +45,25 @@ const courses = [
 ];
 
 export const Main = () => {
+
 const dispatch = useDispatch();
 useEffect(() => {
   dispatch(setLogo({
     logo: "white",
   }))
 }, []);
+// const { data=[], isLoading, isError, isSuccess, error, refetch } = useGetLikeSongsQuery(Mass)
+
+
+// function test() {
+//   let ref = database.ref('/users/' + currentUser.uid).once('value').then(function(snapshot) {
+//     let userData = snapshot.val();
+//     console.log(userData.country);
+//   }
+// }
+
+
+
       return (
     <S.Container>
       <S.Content>
