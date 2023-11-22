@@ -147,7 +147,7 @@ export const VideoName = styled.div`
   margin-bottom: 40px;
 `;
 
-export const VideoExercise = styled.img`
+export const VideoExercise = styled.iframe`
   width: 1160px;
   height: 639px;
   flex-shrink: 0;
