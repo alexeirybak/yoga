@@ -55,7 +55,7 @@ export const Login = () => {
     setIsLoading(true);
 
     const auth = getAuth();
-
+    
     async function signIn() {
       try {
         const { user } = await signInWithEmailAndPassword(

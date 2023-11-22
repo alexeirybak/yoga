@@ -2,6 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Main } from "../main/main";
 import { Login } from "../login/login";
+
 import { NotFound } from "../NotFound/not-found";
 import { Course } from "../courses/course";
 import { Profile } from "../profile/profile";
@@ -20,6 +21,7 @@ export const AppRoutes = () => {
 
   return (
     <>
+
       <Routes>
         <Route element={<ProtectedRoute isAllowed={isAuthorized} />}>
           <Route path="/" element={<Main />} />
@@ -31,6 +33,7 @@ export const AppRoutes = () => {
         <Route path="/register" element={<Register />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
+
     </>
   );
 };

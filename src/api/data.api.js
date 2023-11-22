@@ -1,3 +1,4 @@
+
 import { createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react'
 const DATA_TAG = { type: "Data", id: "LIST" };
 const BASE_URL = "https://yoga-2a129-default-rtdb.firebaseio.com/"
@@ -33,4 +34,5 @@ export const queryApi = createApi({
             invalidatesTags: [DATA_TAG]
         })
     })
+
 })

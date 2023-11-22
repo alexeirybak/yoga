@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
@@ -7,6 +8,7 @@ import { useAuth } from "../../hooks/use-auth";
 import { setLogo } from "../../store/slices/logoSlices";
 import { CourseAppointment } from "../../Components/courseAppointment/courseAppoinment";
 import * as S from "./courseStyle";
+
 
 export const Course = () => {
   const { isAuth, email } = useAuth();
@@ -28,6 +30,12 @@ export const Course = () => {
   const handleModalClose = () => {
     setShowCourseAppointModal(false);
   };
+
+  useEffect(() => {
+    dispatch(setLogo({
+    logo: "black",
+    }))
+  }, []);
 
   return (
     <S.Container>
