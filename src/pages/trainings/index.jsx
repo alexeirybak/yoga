@@ -35,7 +35,7 @@ export const Trainings = () => {
       id: 1,
       name: 'Наклон вперед',
       repeats: 10,
-      repeats_done: 3
+      repeats_done: 2
     },
     {
       id: 2,
