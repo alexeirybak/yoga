@@ -8,6 +8,7 @@ import { setLogo } from "../../store/slices/logoSlices";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import WorkoutSelect from "../../Components/WorkoutSelect/WorkoutSelect";
+import { Loader } from "../../Components/loader/loader";
 
 const courses = [
   { id: "1", img: "/img/profCard1.png" },

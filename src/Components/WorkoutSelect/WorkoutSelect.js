@@ -3,7 +3,7 @@ import * as S from './WorkoutSelect.styled';
 
 export default function WorkoutSelect ({ closeForm, yogaWorkouts, setYogaWorkouts }) {
     
-    //нужно настроить динамическую isFinished в зависимости от repeats и repeats_done
+    //нужно настроить динамическую isFinished в зависимости от repeats и repeats_done как будет готова БД
     
 
     const workoutList = yogaWorkouts.map(workout =>
