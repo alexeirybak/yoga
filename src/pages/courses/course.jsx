@@ -17,11 +17,10 @@ export const Course = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { id } = useParams();
+  const data = useSelector(state => state.course)
   const course = textAboutTraining.find((course) => course.id === Number(id));
   const [showCourseAppointModal, setShowCourseAppointModal] = useState(false);
-  useDataBase()
-  
-  console.log(dataCourse.benefits[0]);
+  useDataBase(course._id)
   useEffect(() => {
     dispatch(setLogo({ logo: "black" }));
   }, [dispatch]);
@@ -52,11 +51,11 @@ export const Course = () => {
 
         <S.TitleLikeText>Подойдет для вас, если:</S.TitleLikeText>
         <S.LikesBlock>
-          {course.benefits.map((item, index) => (
+          {data.benefits.map((item, index) => (
             <S.LikesSubBlock key={index}>
               <S.LikesImg src={`/img/n${index + 1}.png`} alt="number" />
               <S.LikesTextBlock>
-                <S.LikesText>{item.text}</S.LikesText>
+                <S.LikesText>{item}</S.LikesText>
               </S.LikesTextBlock>
             </S.LikesSubBlock>
           ))}
@@ -64,10 +63,10 @@ export const Course = () => {
 
         <S.TitleDirectionsText>Направления:</S.TitleDirectionsText>
         <S.DirectionsBlock>
-          {course.options.map((item, index) => (
+          {data.directions.map((item, index) => (
             <S.DirectionsSubBlock key={index}>
               <S.DirectionsList>
-                <S.DirectionsListLi>{item.text}</S.DirectionsListLi>
+                <S.DirectionsListLi>{item}</S.DirectionsListLi>
               </S.DirectionsList>
             </S.DirectionsSubBlock>
           ))}

@@ -1,6 +1,7 @@
 export const textAboutTraining = [
   {
     id: 1,
+    _id: "ab1",
     title: "Йога",
     benefits: [
       { text: "Давно хотели попробовать йогу, но не решались начать" },
@@ -22,6 +23,7 @@ export const textAboutTraining = [
   },
   {
     id: 2,
+    _id: "bc2",
     title: "Стретчинг",
     benefits: [
       { text: "Улучшить осанку и координацию" },
@@ -42,6 +44,7 @@ export const textAboutTraining = [
 
   {
     id: 3,
+    _id: "cd3",
     title: "Танцевальный фитнес",
     benefits: [
       {
@@ -63,6 +66,7 @@ export const textAboutTraining = [
 
   {
     id: 4,
+    _id: "de4",
     title: "Степ-аэробика",
     benefits: [
       {
@@ -84,6 +88,7 @@ export const textAboutTraining = [
 
   {
     id: 5,
+    _id: "ef5",
     title: "Бодифлекс",
     benefits: [
       {

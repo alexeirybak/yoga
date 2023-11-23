@@ -4,23 +4,24 @@ import firebase from "firebase/compat/app";
 import "firebase/compat/database";
 
 
-  export function useDataBase() {
+  export function useDataBase(idCourse) {
     const dispatch = useDispatch();
     const pageId = useSelector(state => state.course.id)
-    if(pageId !== 'ab1') {
+    if(pageId !== `${idCourse}`) {
         firebase
         .database()
-        .ref("courses/ab1")
+        .ref(`courses/${idCourse}`)
         .once("value")
         .then((snapshot) => {
           const data = snapshot.val();
           dispatch(
             setCourse({
-              id : data._id,
-              name : data.name,
-              benefits : data.benefits,
-              description : data.description,
-              workouts : data.workout,
+              id: data._id,
+              directions: data.directions,
+              name: data.name,
+              benefits: data.benefits,
+              description: data.description,
+              workouts: data.workout,
             })
           )
         })
@@ -28,6 +29,5 @@ import "firebase/compat/database";
           console.error(error);
         });
     }
-    return
       
   }
