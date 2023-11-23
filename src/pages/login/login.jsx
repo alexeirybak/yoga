@@ -13,6 +13,7 @@ export const Login = () => {
   const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const auth = getAuth();
   useEffect(() => {
     dispatch(
       setLogo({
@@ -53,9 +54,7 @@ export const Login = () => {
       return;
     }
     setIsLoading(true);
-
-    const auth = getAuth();
-
+    
     async function signIn() {
       try {
         const { user } = await signInWithEmailAndPassword(
@@ -86,11 +85,11 @@ export const Login = () => {
   return (
     <S.Wrapper>
       <S.ContainerEnter>
-        <S.ModalFormLoginTopImg src="/logo-top.png" alt="logo" />
+        <S.ModalFormLoginTopImg src="/img/logo.png" alt="logo" />
         <S.ModalBlock>
           <S.ModalFormLogin action="#">
             <Link to="/">
-              <S.ModalFormLoginImg src="/logo.png" alt="logo" />
+              <S.ModalFormLoginImg src="/img/logoBlack.png" alt="logo" />
             </Link>
             {error && <S.ErrorMessage>{error}</S.ErrorMessage>}
             <S.ModalFormLoginInput>
@@ -109,7 +108,7 @@ export const Login = () => {
             </S.ModalFormLoginInput>
             <S.ModalFormLoginButtons>
               <S.ModalButtonEnter disabled={isLoading} onClick={handleLogin}>
-                {isLoading ? "Чичас-чичас..." : "Войти"}
+                {isLoading ? "Минутку..." : "Войти"}
               </S.ModalButtonEnter>
               <S.ModalBtnSignup>
                 <Link to="/register">Зарегистрироваться</Link>

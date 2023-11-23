@@ -6,12 +6,19 @@ import { NewLogin } from "../../Components/newLogin/newLogin";
 import { NewRegister } from "../../Components/newRegister/newRegister";
 import { setLogo } from "../../store/slices/logoSlices";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+
+const courses = [
+  { id: "1", img: "/img/profCard1.png" },
+  { id: "2", img: "/img/profCard2.png" },
+];
 
 export const Profile = () => {
   const [edit, setEdit] = useState(false);
   const [editPass, setEditPass] = useState(false);
   const [valuePass, setValuePass] = useState(null);
   const dispatch = useDispatch();
+  const email = localStorage.getItem('email')
 useEffect(() => {
   dispatch(setLogo({
     logo: "black",
@@ -24,11 +31,11 @@ useEffect(() => {
         <S.SubTitle>
           <S.TitleText>Мой профиль</S.TitleText>
           <S.TitleTextLogin>
-            Логин:<S.Text>user@test.com</S.Text>
+            Логин:<S.Text>{email}</S.Text>
           </S.TitleTextLogin>
           {edit ? <NewLogin setEdit={setEdit} /> : null}
           <S.TitleTextPass>
-            Пароль:<S.Text>password</S.Text>
+            Пароль:<S.Text>******</S.Text>
           </S.TitleTextPass>
           {editPass ? (
             <NewRegister
@@ -49,12 +56,14 @@ useEffect(() => {
         <S.TitleCourse>Мои курсы</S.TitleCourse>
 
         <S.SportChoice>
-          <li>
-            <S.Sport>
-              <S.ProfCard src="/img/profCard1.png" alt="prof_card" />
-              <S.SportButton>Перейти →</S.SportButton>
-            </S.Sport>
-          </li>
+          {courses.map((course) => (
+            <S.Sport key={course.id}>
+              <S.ProfCard src={course.img} alt="prof_card" />
+              <Link to={`/training/${course.id}`}>
+                <S.SportButton>Перейти →</S.SportButton>
+              </Link>
+            </S.Sport>            
+          ))}
         </S.SportChoice>
       </S.Content>
     </S.Container>

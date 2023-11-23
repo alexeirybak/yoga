@@ -32,6 +32,7 @@ export const ProgressCloseButton = styled.svg`
     position: absolute;
     top: 15px;
     left: 410px;
+    cursor: pointer;
 `
 
 export const ProgressHeader = styled.div`
@@ -71,7 +72,7 @@ export const ProgressItem = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     line-height: 24px;
     width: 361px;
     font-size: 18px;

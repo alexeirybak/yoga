@@ -1,5 +1,6 @@
 import { useState } from "react";
 import * as S from "./styles";
+import { changePassword } from "../../firebase/changePass";
 
 export function NewRegister({ setEditPass }) {
   const [repeatPass, setRepeatPass] = useState("");
@@ -49,6 +50,8 @@ export function NewRegister({ setEditPass }) {
       setError("");
       setValuePass(repeatPass);
       setIsLoading(true);
+      changePassword(valuePass);
+      setEditPass(false);
     }
   };
 
@@ -57,7 +60,7 @@ export function NewRegister({ setEditPass }) {
       <S.ModalBlock>
         <S.Closer src="/img/close.png" alt="закрыть" onClick={handleClose} />
         <S.ModalFormLogin action="#" onSubmit={handleSave}>
-          <S.ModalFormLoginImg src="/logo.png" alt="logo" />
+          <S.ModalFormLoginImg src="/img/logoBlack.png" alt="logo" />
           {error && <S.ErrorMessage>{error}</S.ErrorMessage>}
           <S.Text>Новый пароль:</S.Text>
           <S.ModalFormLoginInput>

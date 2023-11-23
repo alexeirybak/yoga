@@ -6,6 +6,7 @@ import { useAuth } from "../../hooks/use-auth";
 import { removeUser } from "../../store/slices/userSlices";
 
 export function Header() {
+
   const { isAuth } = useAuth();
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -17,8 +18,8 @@ export function Header() {
     navigate("/");
   };
   const Exit = () => {
-    dispatch(removeUser());
-    setVisible(!visible);
+    dispatch(removeUser())
+    setVisible(!visible)
     navigate("/");
   };
   const ToProfile = () => {
@@ -41,6 +42,7 @@ export function Header() {
             <S.UserNameSpan color={logo.logo} onClick={toggleVisibility}>
               {email2} ↓
             </S.UserNameSpan>
+
           </S.UserDiv>
         ) : (
           <S.LogoTitle>
