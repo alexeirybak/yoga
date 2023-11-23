@@ -14,10 +14,7 @@ export function Register() {
   const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  // useEffect(() => {
-  //   setError(null);
-  // }, [newEmail, password, dublicatePass]);
+  const auth = getAuth();
   useEffect(() => {
     dispatch(
       setLogo({
@@ -76,7 +73,7 @@ export function Register() {
       setIsLoading(true);
     }
 
-    const auth = getAuth();
+
     const createUser = async () => {
       try {
         const { user } = await createUserWithEmailAndPassword(

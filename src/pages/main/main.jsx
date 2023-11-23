@@ -16,7 +16,6 @@ const courses = [
 
 export const Main = () => {
 const dispatch = useDispatch();
-
 useEffect(() => {
   dispatch(setLogo({
     logo: "white",

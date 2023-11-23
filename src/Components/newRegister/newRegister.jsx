@@ -1,5 +1,6 @@
 import { useState } from "react";
 import * as S from "./styles";
+import { changePassword } from "../../firebase/changePass";
 
 export function NewRegister({ setEditPass }) {
   const [repeatPass, setRepeatPass] = useState("");
@@ -49,6 +50,8 @@ export function NewRegister({ setEditPass }) {
       setError("");
       setValuePass(repeatPass);
       setIsLoading(true);
+      changePassword(valuePass);
+      setEditPass(false);
     }
   };
 
