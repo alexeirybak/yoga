@@ -1,11 +1,18 @@
 import { useParams } from 'react-router-dom';
 import * as S from './ProgressInput.styled';
+import { useState } from 'react';
+import ValidatedProgress from '../ValidatedProgress/ValidatedProgress';
 
 export default function ProgressInput ({ closeInput, yogaWorkouts, setYogaWorkouts }) {
 
         //выбранный урок из списка
         const params = useParams();
         const index = Number(params.id);
+
+        const [confirmOnShow, setConfirmOnShow] = useState(false);
+        const submitProgress = () => {
+            setConfirmOnShow(true);
+        }
 
         // const inputHandler = ({ id, value }) => {
             
@@ -26,6 +33,8 @@ export default function ProgressInput ({ closeInput, yogaWorkouts, setYogaWorkou
 
     return (
         <S.ProgressContainer>
+            {confirmOnShow ? 
+            <ValidatedProgress closeInput={closeInput}/> :
             <S.ProgressWrapper>
                 <S.ProgressCloseButton onClick={closeInput}>
                     <use xlinkHref='/icons/sprite.svg#icon-close' />
@@ -33,9 +42,9 @@ export default function ProgressInput ({ closeInput, yogaWorkouts, setYogaWorkou
                 <S.ProgressHeader>Мой прогресс</S.ProgressHeader>
                 <S.ProgressList>
                     {progressList}
-                    <S.ProgressInputButton type='submit'>Отправить</S.ProgressInputButton>
+                    <S.ProgressInputButton onClick={() => submitProgress()} type='submit'>Отправить</S.ProgressInputButton>
                 </S.ProgressList>
-            </S.ProgressWrapper>
+            </S.ProgressWrapper> }
         </S.ProgressContainer>
     )
 }
