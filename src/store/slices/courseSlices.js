@@ -7,6 +7,7 @@ const initialState = {
     benefits: [],
     description: null,
     workouts: [],
+    directions: [],
 };
 
 const courseSlice = createSlice({
@@ -15,6 +16,7 @@ const courseSlice = createSlice({
   reducers: {
     setCourse(state, action) {
         state.id = action.payload.id;
+        state.directions = action.payload.directions;
         state.name = action.payload.name;
         state.benefits = action.payload.benefits;
         state.description = action.payload.description;
