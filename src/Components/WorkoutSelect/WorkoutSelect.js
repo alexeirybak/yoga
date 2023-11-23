@@ -7,8 +7,8 @@ export default function WorkoutSelect ({ closeForm, yogaWorkouts, setYogaWorkout
     
 
     const workoutList = yogaWorkouts.map(workout =>
-        <Link to={`/training/${workout.id}`}> 
-        <S.SelectItem key={workout.id} $isFinished={workout.isFinished}>
+        <Link key={workout.id} to={`/training/${workout.id}`}> 
+        <S.SelectItem  $isFinished={workout.isFinished}>
             {workout.name}
             {workout.isFinished ? <S.SelectItemCheckboxImg>
                 <use xlinkHref='/icons/sprite.svg#icon-complete' />
