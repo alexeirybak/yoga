@@ -22,7 +22,7 @@ export const Trainings = () => {
       id: 1,
       name: 'Приветствие солнца',
       repeats: 10,
-      repeats_done: 5
+      repeats_done: 15
     }],
     video_file: 'https://youtu.be/oqe98Dxivns',
     isFinished: true

@@ -3,13 +3,14 @@ import * as S from './WorkoutSelect.styled';
 
 export default function WorkoutSelect ({ closeForm, yogaWorkouts, setYogaWorkouts }) {
     
-
+    //нужно настроить динамическую isFinished в зависимости от repeats и repeats_done
+    
 
     const workoutList = yogaWorkouts.map(workout =>
         <Link to={`/training/${workout.id}`}> 
-        <S.SelectItem key={workout.id} $isFinished={Boolean(workout.exercise.repeats >= workout.exercise.repeats_done)}>
+        <S.SelectItem key={workout.id} $isFinished={workout.isFinished}>
             {workout.name}
-            {workout.exercise.repeats <= workout.exercise.repeats_done ? <S.SelectItemCheckboxImg>
+            {workout.isFinished ? <S.SelectItemCheckboxImg>
                 <use xlinkHref='/icons/sprite.svg#icon-complete' />
             </S.SelectItemCheckboxImg> : ''}
             <S.SelectItemType>

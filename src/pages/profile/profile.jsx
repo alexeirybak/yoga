@@ -23,7 +23,7 @@ const courses = [
       id: 1,
       name: 'Приветствие солнца',
       repeats: 10,
-      repeats_done: 5
+      repeats_done: 15
     }],
     video_file: 'https://youtu.be/oqe98Dxivns',
     isFinished: true
@@ -208,9 +208,6 @@ export const Profile = () => {
             <S.Sport key={course.id}>
               <S.ProfCard src={course.img} alt="prof_card" />
               <S.SportButton onClick={() => setFormOnShow(true)}>Перейти →</S.SportButton>
-              {/* <Link to={`/training/${course.id}`}>
-                <S.SportButton>Перейти →</S.SportButton>
-              </Link> */}
             </S.Sport>            
           ))}
         </S.SportChoice>
