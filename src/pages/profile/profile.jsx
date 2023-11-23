@@ -18,6 +18,7 @@ export const Profile = () => {
   const [editPass, setEditPass] = useState(false);
   const [valuePass, setValuePass] = useState(null);
   const dispatch = useDispatch();
+  const email = localStorage.getItem('email')
 useEffect(() => {
   dispatch(setLogo({
     logo: "black",
@@ -30,11 +31,11 @@ useEffect(() => {
         <S.SubTitle>
           <S.TitleText>Мой профиль</S.TitleText>
           <S.TitleTextLogin>
-            Логин:<S.Text>user@test.com</S.Text>
+            Логин:<S.Text>{email}</S.Text>
           </S.TitleTextLogin>
           {edit ? <NewLogin setEdit={setEdit} /> : null}
           <S.TitleTextPass>
-            Пароль:<S.Text>password</S.Text>
+            Пароль:<S.Text>******</S.Text>
           </S.TitleTextPass>
           {editPass ? (
             <NewRegister

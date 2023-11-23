@@ -13,6 +13,7 @@ export const Login = () => {
   const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const auth = getAuth();
   useEffect(() => {
     dispatch(
       setLogo({
@@ -53,8 +54,6 @@ export const Login = () => {
       return;
     }
     setIsLoading(true);
-
-    const auth = getAuth();
     
     async function signIn() {
       try {
