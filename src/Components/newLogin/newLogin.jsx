@@ -21,7 +21,7 @@ export const NewLogin = ({ setEdit }) => {
     setError(null);
 
     try {
-      await changeLogin(login);
+      changeLogin(login);
     } catch (error) {
       const errorMessage =
         error.code === "auth/operation-not-allowed"

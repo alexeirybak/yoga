@@ -53,15 +53,18 @@ export const Login = () => {
       setError("Введите пароль");
       return;
     }
+
     setIsLoading(true);
-    
+
     async function signIn() {
       try {
-        const { user } = await signInWithEmailAndPassword(
+        const userCredential = await signInWithEmailAndPassword(
           auth,
           email,
           password
         );
+
+        const user = userCredential.user;
 
         dispatch(
           setUser({
@@ -73,7 +76,14 @@ export const Login = () => {
 
         navigate("/");
       } catch (error) {
-        setError(error.message);
+        if (
+          error.code === "auth/wrong-password" ||
+          error.code === "auth/user-not-found"
+        ) {
+          setError("Неправильная авторизация");
+        } else {
+          setError(error.message);
+        }
       } finally {
         setIsLoading(false);
       }
@@ -81,7 +91,6 @@ export const Login = () => {
 
     signIn();
   };
-
   return (
     <S.Wrapper>
       <S.ContainerEnter>
