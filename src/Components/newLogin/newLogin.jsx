@@ -1,55 +1,23 @@
+
 import { useState, useEffect } from "react";
 import { changeLogin } from "../../firebase/changeEmail";
 import * as S from "./styles";
 
 export const NewLogin = ({ setEdit }) => {
+
   const [login, setLogin] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-
   const handleClose = () => {
-    setEdit(false);
+    // setEdit(false);
   };
-
-  const handleSaveNewLogin = async (event) => {
-    event.preventDefault();
-    if (!login) {
-      setError("Введите email");
-      return;
-    }
-    setIsLoading(true);
-    setError(null);
-
-    try {
-      changeLogin(login);
-    } catch (error) {
-      const errorMessage =
-        error.code === "auth/operation-not-allowed"
-          ? "Ваш логин еще не верифицирован"
-          : "Произошла ошибка при смене логина";
-      setError(errorMessage);
-      if (
-        error.message.includes(
-          "Please verify the new email before changing email."
-        )
-      ) {
-        setError("Пожалуйста, верифицируйте новый логин перед его изменением.");
-      }
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
+  const handleSaveNewLogin = () => {
+    changeLogin(login)
+    console.log('object');
+  }
   const newLogin = (event) => {
-    const loginValidation = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
-    if (!loginValidation.test(event.target.value)) {
-      setError("Проверяйте вводимые символы");
-    } else {
-      setError(null);
-    }
     setLogin(event.target.value);
-  };
-
+  }
   return (
     <S.Wrapper>
       <S.ModalBlock>

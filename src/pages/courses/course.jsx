@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
@@ -11,13 +12,14 @@ import { useDataBase } from "../../firebase/fireCourses";
 
 export const Course = () => {
   const { isAuth, email } = useAuth();
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { id } = useParams();
+
   const data = useSelector((state) => state.course);
   const course = textAboutTraining.find((course) => course.id === Number(id));
   const [showCourseAppointModal, setShowCourseAppointModal] = useState(false);
   useDataBase(course._id);
+
 
   useEffect(() => {
     dispatch(setLogo({ logo: "black" }));
@@ -36,11 +38,10 @@ export const Course = () => {
   };
 
   useEffect(() => {
-    dispatch(
-      setLogo({
-        logo: "black",
-      })
-    );
+    dispatch(setLogo({
+    logo: "black",
+    }))
+
   }, []);
 
   return (

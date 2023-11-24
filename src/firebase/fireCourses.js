@@ -1,3 +1,4 @@
+
 import { useDispatch, useSelector } from "react-redux";
 import { setCourse } from "../store/slices/courseSlices";
 import firebase from "firebase/compat/app";
@@ -29,5 +30,4 @@ import "firebase/compat/database";
           console.error(error);
         });
     }
-      
   }
