@@ -22,7 +22,7 @@ import "firebase/compat/database";
               name: data.name,
               benefits: data.benefits,
               description: data.description,
-              workouts: data.workout,
+              workouts: data.workouts,
             })
           )
         })

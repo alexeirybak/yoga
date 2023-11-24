@@ -11,7 +11,8 @@ import * as S from "./courseStyle";
 import { useDataBase } from "../../firebase/fireCourses";
 
 export const Course = () => {
-  const { isAuth, email } = useAuth();
+  const navigate = useNavigate()
+  const { isAuth } = useAuth();
   const dispatch = useDispatch();
   const { id } = useParams();
 
@@ -19,8 +20,6 @@ export const Course = () => {
   const course = textAboutTraining.find((course) => course.id === Number(id));
   const [showCourseAppointModal, setShowCourseAppointModal] = useState(false);
   useDataBase(course._id);
-
-
   useEffect(() => {
     dispatch(setLogo({ logo: "black" }));
   }, [dispatch]);

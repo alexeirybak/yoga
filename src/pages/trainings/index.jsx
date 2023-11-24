@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import ProgressInput from '../../Components/ProgressInput/ProgressInput';
 import { setLogo } from '../../store/slices/logoSlices';
 import { useDispatch } from 'react-redux';
+import { useDataWorkout } from '../../firebase/fireWorkouts';
 
 export const Trainings = () => {
 
@@ -22,7 +23,7 @@ export const Trainings = () => {
       id: 1,
       name: 'Приветствие солнца',
       repeats: 10,
-      repeats_done: 5
+      repeats_done: 15
     }],
     video_file: 'https://youtu.be/oqe98Dxivns',
     isFinished: true
@@ -35,7 +36,7 @@ export const Trainings = () => {
       id: 1,
       name: 'Наклон вперед',
       repeats: 10,
-      repeats_done: 3
+      repeats_done: 2
     },
     {
       id: 2,
