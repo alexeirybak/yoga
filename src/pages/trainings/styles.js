@@ -1,18 +1,16 @@
 import styled, { css } from "styled-components";
 
 export const Wrapper = styled.div`
-  min-height: 100vh;
-  display: flex;
-  flex-flow: column;
-  align-items: center;
+  position: relative;
+  width: 100%;
   background: #fafafa;
+  padding-left: calc(50% - 800px);
+  padding-right: calc(50% - 800px);
 `;
 
 export const HeaderWrapper = styled.div`
-width: 1160px;
-display: flex;
-flex-flow: column;
-justify-content: space-between;
+margin-left: 140px;
+margin-right: 140px;
 `
 
 
