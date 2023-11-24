@@ -57,11 +57,13 @@ export const Login = () => {
     
     async function signIn() {
       try {
-        const { user } = await signInWithEmailAndPassword(
+        const userCredential = await signInWithEmailAndPassword(
           auth,
           email,
           password
         );
+
+        const user = userCredential.user;
 
         dispatch(
           setUser({
@@ -73,7 +75,14 @@ export const Login = () => {
 
         navigate("/");
       } catch (error) {
-        setError(error.message);
+        if (
+          error.code === "auth/wrong-password" ||
+          error.code === "auth/user-not-found"
+        ) {
+          setError("Неправильная авторизация");
+        } else {
+          setError(error.message);
+        }
       } finally {
         setIsLoading(false);
       }
@@ -81,15 +90,14 @@ export const Login = () => {
 
     signIn();
   };
-
   return (
     <S.Wrapper>
       <S.ContainerEnter>
-        <S.ModalFormLoginTopImg src="/logo-top.png" alt="logo" />
+        <S.ModalFormLoginTopImg src="/img/logo.png" alt="logo" />
         <S.ModalBlock>
           <S.ModalFormLogin action="#">
             <Link to="/">
-              <S.ModalFormLoginImg src="/logo.png" alt="logo" />
+              <S.ModalFormLoginImg src="/img/logoBlack.png" alt="logo" />
             </Link>
             {error && <S.ErrorMessage>{error}</S.ErrorMessage>}
             <S.ModalFormLoginInput>
@@ -108,7 +116,7 @@ export const Login = () => {
             </S.ModalFormLoginInput>
             <S.ModalFormLoginButtons>
               <S.ModalButtonEnter disabled={isLoading} onClick={handleLogin}>
-                {isLoading ? "Чичас-чичас..." : "Войти"}
+                {isLoading ? "Минутку..." : "Войти"}
               </S.ModalButtonEnter>
               <S.ModalBtnSignup>
                 <Link to="/register">Зарегистрироваться</Link>

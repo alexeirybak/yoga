@@ -101,11 +101,11 @@ export function Register() {
   return (
     <S.Wrapper>
       <S.ContainerEnter>
-        <S.ModalFormLoginTopImg src="/logo-top.png" alt="logo" />
+        <S.ModalFormLoginTopImg src="/img/logo.png" alt="logo" />
         <S.ModalBlock>
           <S.ModalFormLogin>
             <Link to="/">
-              <S.ModalFormLoginImg src="/logo.png" alt="logo" />
+              <S.ModalFormLoginImg src="/img/logoBlack.png" alt="logo" />
             </Link>
             {error && <S.ErrorMessage>{error}</S.ErrorMessage>}
             <S.ModalFormLoginInput>

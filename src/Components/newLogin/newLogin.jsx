@@ -1,9 +1,13 @@
-import { useState } from "react";
+
+import { useState, useEffect } from "react";
 import { changeLogin } from "../../firebase/changeEmail";
 import * as S from "./styles";
 
 export const NewLogin = ({ setEdit }) => {
-  const [login, setLogin] = useState('')
+
+  const [login, setLogin] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
   const handleClose = () => {
     // setEdit(false);
   };
@@ -19,13 +23,24 @@ export const NewLogin = ({ setEdit }) => {
       <S.ModalBlock>
         <S.Closer src="/img/close.png" alt="закрыть" onClick={handleClose} />
         <S.ModalFormLogin action="#">
-          <S.ModalFormLoginImg src="/logo.png" alt="logo" />
+          <S.ModalFormLoginImg src="/img/logoBlack.png" alt="logo" />
           <S.Text>Новый логин:</S.Text>
+          {error && <S.ErrorMessage>{error}</S.ErrorMessage>}
           <S.ModalFormLoginInput>
-            <S.ModalInput type="text" placeholder="Логин" onChange={newLogin} value={login}/>
+            <S.ModalInput
+              type="text"
+              placeholder="Логин"
+              onChange={newLogin}
+              value={login}
+            />
           </S.ModalFormLoginInput>
           <S.ModalFormLoginButtons>
-            <S.ModalButtonEnter onClick={handleSaveNewLogin}>Сохранить</S.ModalButtonEnter>
+            <S.ModalButtonEnter
+              disabled={isLoading}
+              onClick={handleSaveNewLogin}
+            >
+              {isLoading ? "Меняю..." : "Сохранить"}
+            </S.ModalButtonEnter>
           </S.ModalFormLoginButtons>
         </S.ModalFormLogin>
       </S.ModalBlock>
