@@ -22,6 +22,7 @@ import { setWorkout } from "../store/slices/workoutsSlices";
             video_file: data.video_file,
             isFinished: data.isFinished,
             exercise: data.exercise,
+            id: data.id,
             })
           )
         })
