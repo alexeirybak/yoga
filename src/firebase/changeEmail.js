@@ -1,3 +1,4 @@
+
 import { getAuth, updateEmail } from "firebase/auth";
 
 export function changeLogin(login) {
@@ -9,4 +10,5 @@ updateEmail(auth.currentUser, login).then((response) => {
 }).catch((error) => {
 console.error(error)
 });
+
 }

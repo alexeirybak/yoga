@@ -55,7 +55,7 @@ export const ModalFormLoginInput = styled.div`
 export const ModalFormLoginButtons = styled(ModalFormLoginInput)``;
 
 export const Text = styled.p`
-  padding-top: 38px;
+  padding-top: 48px;
   padding-bottom: 20px;
   color: #000;
   font-family: StratosSkyeng, sans-serif;
@@ -104,4 +104,19 @@ export const ModalButtonEnter = styled.button`
   &:active {
     background-color: #271a58;
   }
+`;
+
+export const ErrorMessage = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  color: rgb(255, 128, 113);
+  font-size: 1rem;
+  font-weight: 400;
+  position: absolute;
+  top: 80px;
+  left: 5px;
+  text-align: center;
+  margin-top: 10px;
 `;

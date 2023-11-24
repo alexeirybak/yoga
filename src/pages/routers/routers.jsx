@@ -24,13 +24,13 @@ export const AppRoutes = () => {
 
       <Routes>
         <Route element={<ProtectedRoute isAllowed={isAuthorized} />}>
-          <Route path="/course/:id" element={<Course />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/training" element={<Trainings />} />
         </Route>
         <Route path="/" element={<Main />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/course/:id" element={<Course />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
 

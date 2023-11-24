@@ -14,17 +14,23 @@ export const Course = () => {
   const { isAuth, email } = useAuth();
   const dispatch = useDispatch();
   const { id } = useParams();
-  const data = useSelector(state => state.course)
+
+  const data = useSelector((state) => state.course);
   const course = textAboutTraining.find((course) => course.id === Number(id));
   const [showCourseAppointModal, setShowCourseAppointModal] = useState(false);
-  useDataBase(course._id)
+  useDataBase(course._id);
+
 
   useEffect(() => {
     dispatch(setLogo({ logo: "black" }));
   }, [dispatch]);
 
   const handlePopUp = () => {
-    setShowCourseAppointModal(true);
+    if (!isAuth) {
+      navigate("/login");
+    } else {
+      setShowCourseAppointModal(true);
+    }
   };
 
   const handleModalClose = () => {
@@ -35,6 +41,7 @@ export const Course = () => {
     dispatch(setLogo({
     logo: "black",
     }))
+
   }, []);
 
   return (
@@ -87,8 +94,8 @@ export const Course = () => {
               Записаться на тренировку
             </S.SignUpTrainingButton>
             <CourseAppointment
-              isOpen={showCourseAppointModal} 
-              onClose={handleModalClose} 
+              isOpen={showCourseAppointModal}
+              onClose={handleModalClose}
             />
           </S.FooterSubBlock>
           <S.HandsetImg src="/img/phone.png" alt="Handset" />
@@ -96,4 +103,4 @@ export const Course = () => {
       </S.ContentBlock>
     </S.Container>
   );
-}
+};
