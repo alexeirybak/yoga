@@ -155,7 +155,6 @@ export const FirstExerciseBar = styled.div`
 // `;
 
 const ProgressFilledInMixin = css`
-  color: rgb(255, 255, 255);
   position: relative;
   height: 100%;
 `;
@@ -164,20 +163,10 @@ export const FirstFilledIn = styled.div`
   ${ProgressFilledInMixin}
   background: ${({ $progColorMain }) => ($progColorMain)};
   width: ${({ $width }) => ($width)}%;
+  color: ${({$width, $progColorMain}) => ($width <= 23 ? $progColorMain : '#fff')};
+  
 `;
 
-// export const SecondFilledIn = styled.div`
-//   ${ProgressFilledInMixin}
-//   background: rgb(255, 109, 0);
-//   width: 60%;
-// `;
-
-// export const ThirdFilledIn = styled.div`
-//   ${ProgressFilledInMixin}
-//   background: rgb(86, 94, 239);
-//   width: 20%;
-//   color: rgb(154, 72, 241);
-// `;
 
 export const ProgressResult = styled.span`
   margin-left: 4rem;
