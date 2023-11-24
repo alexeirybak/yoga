@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import ProgressInput from '../../Components/ProgressInput/ProgressInput';
 import { setLogo } from '../../store/slices/logoSlices';
 import { useDispatch } from 'react-redux';
+import { useDataWorkout } from '../../firebase/fireWorkouts';
 
 export const Trainings = () => {
 

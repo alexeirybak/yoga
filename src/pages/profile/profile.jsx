@@ -5,10 +5,11 @@ import { Header } from "../../Components/header/header";
 import { NewLogin } from "../../Components/newLogin/newLogin";
 import { NewRegister } from "../../Components/newRegister/newRegister";
 import { setLogo } from "../../store/slices/logoSlices";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import WorkoutSelect from "../../Components/WorkoutSelect/WorkoutSelect";
 import { Loader } from "../../Components/loader/loader";
+import { useDataWorkout } from "../../firebase/fireWorkouts";
 
 const courses = [
   { id: "1", img: "/img/profCard1.png" },
@@ -153,6 +154,7 @@ export const Profile = () => {
   const [editPass, setEditPass] = useState(false);
   const [valuePass, setValuePass] = useState(null);
   const dispatch = useDispatch();
+  const dataWorkout = useSelector(state => state.workout)
   const email = localStorage.getItem('email')
 
   useEffect(() => {
@@ -171,8 +173,9 @@ export const Profile = () => {
   const workoutSelectionForm = (
       <WorkoutSelect closeForm={closeForm} yogaWorkouts={yogaWorkouts} setYogaWorkouts={setYogaWorkouts}></WorkoutSelect>
   )
-
-
+  const IDWorkout = 1
+useDataWorkout(IDWorkout)
+console.log(dataWorkout);
   return (
     <S.Container>
       <S.Content>
