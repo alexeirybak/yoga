@@ -6,6 +6,7 @@ const initialState = {
     video_file: null,
     isFinished: null,
     exercise: [],
+    id: null,
 
 };
 
@@ -19,6 +20,7 @@ const workoutSlice = createSlice({
         state.video_file = action.payload.video_file;
         state.isFinished = action.payload.isFinished;
         state.exercise = action.payload.exercise;
+        state.id = action.payload.id;
     },
   },
 });
