@@ -53,9 +53,8 @@ export const Login = () => {
       setError("Введите пароль");
       return;
     }
-
     setIsLoading(true);
-
+    
     async function signIn() {
       try {
         const userCredential = await signInWithEmailAndPassword(

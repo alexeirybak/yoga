@@ -42,6 +42,7 @@ list-style-type: none;
   position: relative;
 float: right;
 text-align: right;
+z-index: 9;
 `
 export const HeaderLi = styled.li`
 padding-top: 10px;

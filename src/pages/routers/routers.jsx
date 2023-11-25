@@ -25,7 +25,7 @@ export const AppRoutes = () => {
       <Routes>
         <Route element={<ProtectedRoute isAllowed={isAuthorized} />}>
           <Route path="/profile" element={<Profile />} />
-          <Route path="/training" element={<Trainings />} />
+          <Route path="/training/:id" element={<Trainings />} />
         </Route>
         <Route path="/" element={<Main />} />
         <Route path="/login" element={<Login />} />

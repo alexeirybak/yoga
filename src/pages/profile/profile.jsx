@@ -1,29 +1,52 @@
-
 import * as S from "./profileStyle";
 import { useEffect, useState } from "react";
 import { Header } from "../../Components/header/header";
 import { NewLogin } from "../../Components/newLogin/newLogin";
 import { NewRegister } from "../../Components/newRegister/newRegister";
 import { setLogo } from "../../store/slices/logoSlices";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import WorkoutSelect from "../../Components/WorkoutSelect/WorkoutSelect";
+import { Loader } from "../../Components/loader/loader";
+import { useDataWorkout } from "../../firebase/fireWorkouts";
 
-const courses = [
-  { id: "1", img: "/img/profCard1.png" },
-  { id: "2", img: "/img/profCard2.png" },
-];
+const courses = [{ id: "1", img: "/img/profCard1.png" }];
 
 export const Profile = () => {
   const [edit, setEdit] = useState(false);
   const [editPass, setEditPass] = useState(false);
   const [valuePass, setValuePass] = useState(null);
   const dispatch = useDispatch();
-  const email = localStorage.getItem('email')
-useEffect(() => {
-  dispatch(setLogo({
-    logo: "black",
-  }))
-}, []);
+  const dataWorkout = useSelector((state) => state.workout);
+  const email = localStorage.getItem("email");
+
+  useEffect(() => {
+    dispatch(
+      setLogo({
+        logo: "black",
+      })
+    );
+  }, []);
+
+  const [yogaWorkouts, setYogaWorkouts] = useState(dataWorkout);
+  console.log(yogaWorkouts);
+  const [formOnShow, setFormOnShow] = useState(false);
+
+  const closeForm = () => {
+    setFormOnShow(false);
+  };
+  
+
+  const workoutSelectionForm = (
+    <WorkoutSelect
+      closeForm={closeForm}
+      yogaWorkouts={yogaWorkouts}
+      setYogaWorkouts={setYogaWorkouts}
+    ></WorkoutSelect>
+  );
+
+  useDataWorkout();
+
   return (
     <S.Container>
       <S.Content>
@@ -59,16 +82,17 @@ useEffect(() => {
           {courses.map((course) => (
             <S.Sport key={course.id}>
               <S.ProfCard src={course.img} alt="prof_card" />
-              <Link to={`/training/${course.id}`}>
-                <S.SportButton>Перейти →</S.SportButton>
-              </Link>
-            </S.Sport>            
+              <S.SportButton onClick={() => setFormOnShow(true)}>
+                Перейти →
+              </S.SportButton>
+            </S.Sport>
           ))}
         </S.SportChoice>
+        {formOnShow ? workoutSelectionForm : null}
       </S.Content>
     </S.Container>
   );
-}
+};
 
 // (
 //     <div>

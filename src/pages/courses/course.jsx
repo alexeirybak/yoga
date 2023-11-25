@@ -10,15 +10,15 @@ import * as S from "./courseStyle";
 import { useDataBase } from "../../firebase/fireCourses";
 
 export const Course = () => {
-  const { isAuth, email } = useAuth();
   const navigate = useNavigate();
+  const { isAuth } = useAuth();
   const dispatch = useDispatch();
   const { id } = useParams();
+
   const data = useSelector((state) => state.course);
   const course = textAboutTraining.find((course) => course.id === Number(id));
   const [showCourseAppointModal, setShowCourseAppointModal] = useState(false);
   useDataBase(course._id);
-
   useEffect(() => {
     dispatch(setLogo({ logo: "black" }));
   }, [dispatch]);
@@ -43,13 +43,15 @@ export const Course = () => {
     );
   }, []);
 
+  console.log(data);
+
   return (
     <S.Container>
       <S.ContentBlock>
         <Header />
         <S.HeadContentBlock id={id}>
           <S.SubTitleBlock>
-            <S.TitleText>{course.title}</S.TitleText>
+            <S.TitleText>{data.name}</S.TitleText>
           </S.SubTitleBlock>
         </S.HeadContentBlock>
 
@@ -77,7 +79,7 @@ export const Course = () => {
         </S.DirectionsBlock>
 
         <S.InfoBlock>
-          <S.InfoText>{course.description}</S.InfoText>
+          <S.InfoText>{data.description}</S.InfoText>
         </S.InfoBlock>
 
         <S.FooterContentBlock>

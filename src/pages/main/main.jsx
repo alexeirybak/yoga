@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { setLogo } from "../../store/slices/logoSlices";
 import { Header } from "../../Components/header/header";
+import { useUser } from "../../firebase/getUser";
 
 const courses = [
   { id: "1", img: "/img/profCard1.png" },
@@ -21,6 +22,8 @@ useEffect(() => {
     logo: "white",
   }))
 }, []);
+useUser()
+
       return (
     <S.Container>
       <S.Content>

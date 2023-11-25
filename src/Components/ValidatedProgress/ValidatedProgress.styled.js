@@ -23,6 +23,7 @@ export const ValidatedProgressWrapper = styled.div`
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    position: relative;
 `
 
 export const ValidatedProgressHeader = styled.div`
@@ -37,4 +38,12 @@ export const ValidatedProgressSvg = styled.svg`
     height: 212px;
     width: 196px;
 
+`
+export const ProgressCloseButton = styled.svg`
+    width: 20px;
+    height: 23px;
+    position: absolute;
+    top: 15px;
+    left: 410px;
+    cursor: pointer;
 `
