@@ -4,26 +4,18 @@ import "firebase/compat/database";
 import { setWorkout } from "../store/slices/workoutsSlices";
 
 
-  export function useDataWorkout(idWorkout) {
+  export function useDataWorkout() {
     const dispatch = useDispatch();
-    const checkName = useSelector(state => state.workout.name)
-    if(checkName !== 'Красота и здоровье') {
+    const check = useSelector(state => state.workout)
+    if(check.trainingData.length === 0) {
         firebase
         .database()
-        .ref(`workouts/${idWorkout}`)
+        .ref(`workouts`)
         .once("value")
         .then((snapshot) => {
           const data = snapshot.val();
-          console.log(data);
           dispatch(
-            setWorkout({
-            name: data.name,
-            type: data.type,
-            video_file: data.video_file,
-            isFinished: data.isFinished,
-            exercise: data.exercise,
-            id: data.id,
-            })
+            setWorkout(data)
           )
         })
         .catch((error) => {

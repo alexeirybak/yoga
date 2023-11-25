@@ -173,9 +173,8 @@ export const Profile = () => {
   const workoutSelectionForm = (
       <WorkoutSelect closeForm={closeForm} yogaWorkouts={yogaWorkouts} setYogaWorkouts={setYogaWorkouts}></WorkoutSelect>
   )
-  const IDWorkout = 1
 
-useDataWorkout(IDWorkout)
+useDataWorkout()
 console.log(dataWorkout);
   return (
     <S.Container>
