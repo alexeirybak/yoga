@@ -24,7 +24,7 @@ export default function ProgressInput ({ closeInput, yogaWorkouts, setYogaWorkou
 
         const progressList = yogaWorkouts[index].exercise.map(exercise => 
             <S.ProgressItem key={exercise.id}>
-                <label for={exercise.id}>Сколько раз вы сделали {exercise.name} </label>
+                <label htmlFor={exercise.id}>Сколько раз вы сделали {exercise.name} </label>
                 <S.ProgressItemInput placeholder='Введите значение' id={exercise.id} type='number'
                 //  onChange={inputHandler({id: exercise.id, value: ((e) => e.target.value)})}  
                  />
