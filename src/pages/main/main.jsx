@@ -24,7 +24,6 @@ useEffect(() => {
   }))
 }, []);
 useUser()
-updateProgressExercise(0, 0, 12)
       return (
     <S.Container>
       <S.Content>

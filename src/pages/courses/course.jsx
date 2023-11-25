@@ -15,7 +15,6 @@ export const Course = () => {
   const { isAuth } = useAuth();
   const dispatch = useDispatch();
   const { id } = useParams();
-
   const data = useSelector((state) => state.course);
   const course = textAboutTraining.find((course) => course.id === Number(id));
   const [showCourseAppointModal, setShowCourseAppointModal] = useState(false);
