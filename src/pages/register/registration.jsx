@@ -5,6 +5,7 @@ import { setUser } from "../../store/slices/userSlices";
 import { Link, useNavigate } from "react-router-dom";
 import { getAuth, createUserWithEmailAndPassword } from "@firebase/auth";
 import { setLogo } from "../../store/slices/logoSlices";
+import { saveNewUsers } from "../../firebase/newUserData";
 
 export function Register() {
   const [newEmail, setNewEmail] = useState("");
@@ -88,6 +89,7 @@ export function Register() {
             id: user.uid,
           })
         );
+        saveNewUsers(newEmail, password)
         navigate("/");
       } catch (error) {
         setError(error.message);
