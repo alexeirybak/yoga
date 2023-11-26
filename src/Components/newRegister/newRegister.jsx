@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import * as S from "./styles";
 import { changePassword } from "../../firebase/changePass";
 
@@ -60,7 +61,9 @@ export function NewRegister({ setEditPass }) {
       <S.ModalBlock>
         <S.Closer src="/img/close.png" alt="закрыть" onClick={handleClose} />
         <S.ModalFormLogin action="#" onSubmit={handleSave}>
-          <S.ModalFormLoginImg src="/img/logoBlack.png" alt="logo" />
+          <Link to="/">
+            <S.ModalFormLoginImg src="/img/logoBlack.png" alt="logo" />
+          </Link>
           {error && <S.ErrorMessage>{error}</S.ErrorMessage>}
           <S.Text>Новый пароль:</S.Text>
           <S.ModalFormLoginInput>

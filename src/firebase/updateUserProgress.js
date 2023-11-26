@@ -1,3 +1,4 @@
+
 import firebase from "firebase/compat/app";
 import "firebase/compat/database";
 
@@ -25,4 +26,5 @@ export function updateProgressExercise(IDtraining, IDexercise, newValue) {
       .catch((error) => {
         console.error(error);
       });
+
 }

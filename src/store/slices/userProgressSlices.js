@@ -1,3 +1,4 @@
+
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {userProgressAll: null}
@@ -14,3 +15,4 @@ const userProgressSlice = createSlice({
 
 export const { setProgress } = userProgressSlice.actions;
 export default userProgressSlice.reducer;
+
