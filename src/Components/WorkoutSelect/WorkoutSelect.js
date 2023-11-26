@@ -6,7 +6,7 @@ export default function WorkoutSelect({ closeForm }) {
   const yogaWorkouts = useSelector((state) => state.workout);
 
   const workoutList = yogaWorkouts.trainingData.map((workout) => (
-    <Link key={workout.id} to={`/training/${workout.id - 1}`}>
+    <Link key={workout.id} to={`/training/${workout.id}`}>
       <S.SelectItem $isFinished={workout.isFinished}>
         {workout.name}
         {workout.isFinished ? (

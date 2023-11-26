@@ -7,11 +7,18 @@ import { setLogo } from "../../store/slices/logoSlices";
 import { useDispatch, useSelector } from "react-redux";
 
 export const Trainings = () => {
+  const [yogaWorkouts, setYogaWorkouts] = useState(
+    useSelector((state) => state.workout)
+  );
   const getProgressInPercent = ({ needed, done }) => {
     return (done / needed) * 100;
   };
 
-  const yogaExercises = useSelector((state) => state.workout);
+  const { id } = useParams();
+
+  const workout = yogaWorkouts.trainingData.find(
+    (workout) => workout.id === Number(id)
+  );
 
   // костыль для цвета прогрессбара
   const colors = [
@@ -37,11 +44,6 @@ export const Trainings = () => {
     },
   ];
 
-  const { params } = useParams();
-
-  const trainingChosen = yogaExercises.trainingData[params];
-  console.log(params);
-
   // тут будущий запрос в БД на данные про тренировке
   // const { data, isLoading, error } = useGetSelectedTrainingQuery({ id: params.id });
 
@@ -54,8 +56,8 @@ export const Trainings = () => {
   const progressForm = (
     <ProgressInput
       closeInput={closeInput}
-      yogaExercises={yogaExercises}
-      // setYogaWorkouts={setYogaWorkouts}
+      yogaWorkouts={yogaWorkouts}
+      setYogaWorkouts={setYogaWorkouts}
     ></ProgressInput>
   );
   const dispatch = useDispatch();
@@ -76,11 +78,11 @@ export const Trainings = () => {
           <S.ContentVideoBlock>
             <S.VideoHeader>Йога</S.VideoHeader>
             <S.VideoName>
-              {trainingChosen.name} / {trainingChosen.type}
+              {workout.name} / {workout.type}
             </S.VideoName>
 
             <S.VideoExercise
-              src={trainingChosen.video_file}
+              src={workout.video_file}
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen
@@ -92,7 +94,7 @@ export const Trainings = () => {
                 Упражнения
               </S.ExerciseDescriptionHeader>
               <S.ExercisesList>
-                {trainingChosen.exercise.map((exe, index) => (
+                {workout.exercise.map((exe, index) => (
                   <S.ExerciseListItem key={index}>
                     {exe.name} ({exe.repeats} повторений)
                   </S.ExerciseListItem>
@@ -105,7 +107,7 @@ export const Trainings = () => {
             <S.Progress>
               <S.ProgressHeader>Мой прогресс по тренировке</S.ProgressHeader>
               <S.ProgressDetails>
-                {trainingChosen.exercise.map((exe, index) => (
+                {workout.exercise.map((exe, index) => (
                   <S.ProgressItem key={index}>
                     <S.ExerciseProgress>{exe.name}</S.ExerciseProgress>
                     <S.FirstExerciseBar
