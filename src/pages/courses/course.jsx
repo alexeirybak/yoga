@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
@@ -11,6 +12,7 @@ import { useDataBase } from "../../firebase/fireCourses";
 
 export const Course = () => {
   const navigate = useNavigate();
+
   const { isAuth } = useAuth();
   const dispatch = useDispatch();
   const { id } = useParams();
@@ -36,11 +38,10 @@ export const Course = () => {
   };
 
   useEffect(() => {
-    dispatch(
-      setLogo({
-        logo: "black",
-      })
-    );
+    dispatch(setLogo({
+    logo: "black",
+    }))
+
   }, []);
 
   console.log(data);

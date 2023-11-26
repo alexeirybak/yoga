@@ -1,11 +1,13 @@
 import { useParams } from "react-router-dom";
 import { Header } from "../../Components/header/header";
 import * as S from "./styles";
+
 import { useEffect, useState } from "react";
 import ProgressInput from "../../Components/ProgressInput/ProgressInput";
 import { setLogo } from "../../store/slices/logoSlices";
 import { useDispatch } from "react-redux";
 import { useDataWorkout } from "../../firebase/fireWorkouts";
+
 
 export const Trainings = () => {
   const getProgressInPercent = ({ needed, done }) => {
@@ -56,6 +58,7 @@ export const Trainings = () => {
       video_file:
         "https://www.youtube.com/watch?v=v-xTLFDhoD0",
       isFinished: true,
+
     },
     {
       id: 2,

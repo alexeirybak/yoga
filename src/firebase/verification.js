@@ -1,3 +1,4 @@
+
 import "firebase/compat/database";
 import firebase from "firebase/compat/app";
 
@@ -28,3 +29,4 @@ const user = auth.currentUser;
 //       // An error happened.
 //     });
 // }
+
