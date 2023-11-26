@@ -1,4 +1,3 @@
-
 import * as S from "./profileStyle";
 import { useEffect, useState } from "react";
 import { Header } from "../../Components/header/header";
@@ -11,10 +10,7 @@ import WorkoutSelect from "../../Components/WorkoutSelect/WorkoutSelect";
 import { Loader } from "../../Components/loader/loader";
 import { useDataWorkout } from "../../firebase/fireWorkouts";
 
-const courses = [
-  { id: "1", img: "/img/profCard1.png" },
-  { id: "2", img: "/img/profCard2.png" },
-];
+const courses = [{ id: "1", img: "/img/profCard1.png" }];
 
   //мокап тренировок
   const yogaWorkoutsMock = [{
@@ -154,28 +150,40 @@ export const Profile = () => {
   const [editPass, setEditPass] = useState(false);
   const [valuePass, setValuePass] = useState(null);
   const dispatch = useDispatch();
-  const dataWorkout = useSelector(state => state.workout)
-  const email = localStorage.getItem('email')
+
+  const dataWorkout = useSelector((state) => state.workout);
+  const email = localStorage.getItem("email");
 
   useEffect(() => {
-    dispatch(setLogo({
-      logo: "black",
-    }))
+    dispatch(
+      setLogo({
+        logo: "black",
+      })
+    );
   }, []);
 
-  const [yogaWorkouts, setYogaWorkouts] = useState(yogaWorkoutsMock);
+  const [yogaWorkouts, setYogaWorkouts] = useState(dataWorkout);
+  console.log(yogaWorkouts);
+
   const [formOnShow, setFormOnShow] = useState(false);
 
   const closeForm = () => {
     setFormOnShow(false);
-  }
+
+  };
+  
 
   const workoutSelectionForm = (
-      <WorkoutSelect closeForm={closeForm} yogaWorkouts={yogaWorkouts} setYogaWorkouts={setYogaWorkouts}></WorkoutSelect>
-  )
+    <WorkoutSelect
+      closeForm={closeForm}
+      yogaWorkouts={yogaWorkouts}
+      setYogaWorkouts={setYogaWorkouts}
+    ></WorkoutSelect>
+  );
 
-useDataWorkout()
-console.log(dataWorkout);
+  useDataWorkout();
+
+
   return (
     <S.Container>
       <S.Content>
@@ -211,15 +219,19 @@ console.log(dataWorkout);
           {courses.map((course) => (
             <S.Sport key={course.id}>
               <S.ProfCard src={course.img} alt="prof_card" />
-              <S.SportButton onClick={() => setFormOnShow(true)}>Перейти →</S.SportButton>
-            </S.Sport>            
+
+              <S.SportButton onClick={() => setFormOnShow(true)}>
+                Перейти →
+              </S.SportButton>
+            </S.Sport>
+
           ))}
         </S.SportChoice>
         {formOnShow ? workoutSelectionForm : null}
       </S.Content>
     </S.Container>
   );
-}
+};
 
 // (
 //     <div>

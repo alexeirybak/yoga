@@ -1,3 +1,4 @@
+
 import { useDispatch, useSelector } from "react-redux";
 import firebase from "firebase/compat/app";
 import "firebase/compat/database";
@@ -22,4 +23,5 @@ import { setWorkout } from "../store/slices/workoutsSlices";
           console.error(error);
         });
     }
+
   }
