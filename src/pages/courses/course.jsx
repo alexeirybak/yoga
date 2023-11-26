@@ -44,6 +44,8 @@ export const Course = () => {
 
   }, []);
 
+  console.log(data);
+
   return (
     <S.Container>
       <S.ContentBlock>
