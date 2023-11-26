@@ -7,9 +7,9 @@ import { NotFound } from "../NotFound/not-found";
 import { Course } from "../courses/course";
 import { Profile } from "../profile/profile";
 import { Register } from "../register/registration";
-import { Trainings } from "../trainings";
+import { Trainings } from "../trainings/trainings";
 import { ProtectedRoute } from "../../Components/ProtectedRoute/ProtectedRoute";
-
+ 
 export const AppRoutes = () => {
   let user = useSelector((state) => state.user.userMail);
 
@@ -25,7 +25,7 @@ export const AppRoutes = () => {
       <Routes>
         <Route element={<ProtectedRoute isAllowed={isAuthorized} />}>
           <Route path="/profile" element={<Profile />} />
-          <Route path="/training/:id" element={<Trainings />} />
+          <Route path="/training/:params" element={<Trainings />} />
         </Route>
         <Route path="/" element={<Main />} />
         <Route path="/login" element={<Login />} />

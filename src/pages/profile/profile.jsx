@@ -17,7 +17,6 @@ export const Profile = () => {
   const [editPass, setEditPass] = useState(false);
   const [valuePass, setValuePass] = useState(null);
   const dispatch = useDispatch();
-  const dataWorkout = useSelector((state) => state.workout);
   const email = localStorage.getItem("email");
 
   useEffect(() => {
@@ -28,14 +27,15 @@ export const Profile = () => {
     );
   }, []);
 
-  const [yogaWorkouts, setYogaWorkouts] = useState(dataWorkout);
-  console.log(yogaWorkouts);
+  const [yogaWorkouts, setYogaWorkouts] = useState(
+    useSelector((state) => state.workout)
+  );
+  
   const [formOnShow, setFormOnShow] = useState(false);
 
   const closeForm = () => {
     setFormOnShow(false);
   };
-  
 
   const workoutSelectionForm = (
     <WorkoutSelect
@@ -44,8 +44,6 @@ export const Profile = () => {
       setYogaWorkouts={setYogaWorkouts}
     ></WorkoutSelect>
   );
-
-  useDataWorkout();
 
   return (
     <S.Container>

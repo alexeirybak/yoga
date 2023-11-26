@@ -1,4 +1,3 @@
-
 import styled from "styled-components";
 export const Container = styled.div`
   position: relative;
@@ -13,13 +12,9 @@ export const Content = styled.div`
   margin-right: 140px;
 `;
 
-
-
-
-
 export const HeaderContent = styled.div`
   display: flex;
-  gap: 162px;
+  gap: 10px;
 `;
 
 export const SubTitle = styled.div`
@@ -110,4 +105,3 @@ export const Up = styled.button`
     background: #ebffab;
   }
 `;
-
