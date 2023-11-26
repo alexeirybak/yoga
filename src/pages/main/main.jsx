@@ -10,6 +10,7 @@ import { useUser } from "../../firebase/getUser";
 import { updateProgressExercise } from "../../firebase/updateUserProgress";
 
 
+
 const courses = [
   { id: "1", img: "/img/profCard1.png" },
   { id: "2", img: "/img/profCard2.png" },
