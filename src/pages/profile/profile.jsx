@@ -162,8 +162,6 @@ export const Profile = () => {
     );
   }, []);
 
-  const [yogaWorkouts, setYogaWorkouts] = useState(dataWorkout);
-  console.log(yogaWorkouts);
 
   const [formOnShow, setFormOnShow] = useState(false);
 
@@ -176,13 +174,8 @@ export const Profile = () => {
   const workoutSelectionForm = (
     <WorkoutSelect
       closeForm={closeForm}
-      yogaWorkouts={yogaWorkouts}
-      setYogaWorkouts={setYogaWorkouts}
     ></WorkoutSelect>
   );
-
-  useDataWorkout();
-
 
   return (
     <S.Container>
