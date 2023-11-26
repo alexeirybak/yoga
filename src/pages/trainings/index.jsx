@@ -271,7 +271,6 @@ export const Trainings = () => {
                             needed: exe.repeats,
                             done: exe.repeats_done,
                           })}
-                          
                           %
                         </S.ProgressResult>
                       </S.FirstFilledIn>
