@@ -160,8 +160,7 @@ export const Trainings = () => {
   //     isFinished: false,
   //   },
   // ]);
-
-  const yogaWorkouts = useSelector(state => state.workout)
+  const yogaWorkouts = useSelector(state => state.workout);
 
   // костыль для цвета прогрессбара
   const colors = [
@@ -204,7 +203,7 @@ export const Trainings = () => {
   const progressForm = (
     <ProgressInput
       closeInput={closeInput}
-      yogaWorkouts={yogaWorkouts}
+      trainingChosen={trainingChosen}
     ></ProgressInput>
   );
   const dispatch = useDispatch();

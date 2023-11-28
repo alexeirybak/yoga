@@ -5,9 +5,8 @@ import { useSelector } from "react-redux";
 
 export default function WorkoutSelect({
   closeForm,
-  setYogaWorkouts,
 }) {
-  //нужно настроить динамическую isFinished в зависимости от repeats и repeats_done как будет готова БД
+  
   const yogaWorkouts = useSelector(state => state.workout)
   console.log(yogaWorkouts);
 
