@@ -162,6 +162,8 @@ export const Profile = () => {
     );
   }, []);
 
+  useDataWorkout();
+
 
   const [formOnShow, setFormOnShow] = useState(false);
 
