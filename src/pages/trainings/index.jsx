@@ -205,7 +205,6 @@ export const Trainings = () => {
     <ProgressInput
       closeInput={closeInput}
       yogaWorkouts={yogaWorkouts}
-      // setYogaWorkouts={setYogaWorkouts}
     ></ProgressInput>
   );
   const dispatch = useDispatch();

@@ -3,7 +3,7 @@ import * as S from './ProgressInput.styled';
 import { useState } from 'react';
 import ValidatedProgress from '../ValidatedProgress/ValidatedProgress';
 
-export default function ProgressInput ({ closeInput, yogaWorkouts, setYogaWorkouts }) {
+export default function ProgressInput ({ closeInput, yogaWorkouts }) {
 
         //выбранный урок из списка
         const params = useParams();
