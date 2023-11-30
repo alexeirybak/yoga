@@ -230,22 +230,19 @@ useEffect(() => {
       })
     );
   }, []);
-if(show === true){
-  return (
-    <dataTraining.Provider value={dataTrain}>
-<dataTraining.Consumer>
-{ value =>    <S.Wrapper>
+  if(show === true){
+    return (
+      <S.Wrapper>
       <S.HeaderWrapper>
         <Header />
-
+  
         <S.ContentBlock>
           <S.ContentVideoBlock>
             <S.VideoHeader>Йога</S.VideoHeader>
             <S.VideoName>
-            
               {trainingChosen.name} / {trainingChosen.type}
             </S.VideoName>
-
+  
             <S.VideoExercise
               src={trainingChosen.video_file}
               frameBorder="0"
@@ -272,60 +269,39 @@ if(show === true){
             <S.Progress>
               <S.ProgressHeader>Мой прогресс по тренировке</S.ProgressHeader>
               <S.ProgressDetails>
-                {/* {value.userProgressAll.userProgressAll.workoutsProgress.map((exe, index) => (
+                {trainingChosen.exercise.map((exe, index) => (
                   <S.ProgressItem key={index}>
-                    <S.ExerciseProgress>{1}</S.ExerciseProgress>
+                    <S.ExerciseProgress>{exe.name}</S.ExerciseProgress>
                     <S.FirstExerciseBar
-                      $progColorLight='red'
-                      $progColorMain='black'
+                      $progColorLight={colors[index].light}
+                      $progColorMain={colors[index].main}
                     >
                       <S.FirstFilledIn
-                        $progColorMain='white'
+                        $progColorMain={colors[index].main}
                         $width={getProgressInPercent({
-                          needed: 10,
-                          done: exe[index].progress,
+                          needed: exe.repeats,
+                          done: exe.repeats_done,
                         })}
                       >
                         <S.ProgressResult>
                           {getProgressInPercent({
-                            needed: 10,
-                            done: exe[index].progress,
+                            needed: exe.repeats,
+                            done: exe.repeats_done,
                           })}
                           %
                         </S.ProgressResult>
                       </S.FirstFilledIn>
                     </S.FirstExerciseBar>
                   </S.ProgressItem>
-                ))} */}
+                ))}
               </S.ProgressDetails>
             </S.Progress>
           </S.ExerciseBlock>
         </S.ContentBlock>
         {inputOnShow ? progressForm : null}
       </S.HeaderWrapper>
-    </S.Wrapper>}
-    </dataTraining.Consumer>
-    </dataTraining.Provider>
+    </S.Wrapper>
   );
-};
-}
+  };
+  }
 
-// {trainingChosen.exercise.map((exe, index) => (
-//   <S.ProgressItem key={index}>
-//     <S.ExerciseProgress>{exe.name}</S.ExerciseProgress>
-//     <S.FirstExerciseBar
-//       $progColorLight={colors[index].light}
-//       $progColorMain={colors[index].main}
-//     >
-//       <S.FirstFilledIn
-//         $progColorMain={colors[index].main}
-//         $width={getProgressInPercent({
-//           needed: exe.repeats,
-//           done: exe.repeats_done,
-//         })}
-//       >
-//         <S.ProgressResult>
-//           {getProgressInPercent({
-//             needed: exe.repeats,
-//             done: exe.repeats_done,
-//           })}
