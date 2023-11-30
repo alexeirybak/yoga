@@ -1,3 +1,4 @@
+
 import firebase from "firebase/compat/app";
 import "firebase/compat/database";
 
@@ -14,15 +15,17 @@ import "firebase/compat/database";
       });
 }
 
-export function updateProgressExercise(IDtraining, IDexercise, newValue) {
+export function updateProgressExercise(IDtraining, progress) {
     const user = localStorage.getItem('email');
+    const id = IDtraining
     firebase
     .database()
-    .ref(`users/` + user.replace(/\./g, "-") + '/workoutsProgress' + `/${IDtraining}` + `/${IDexercise}`)
+    .ref(`users/` + user.replace(/\./g, "-") + '/workoutsProgress' + `/${IDtraining}`)
     .update({
-        progress: newValue,
+      progress,
     })
       .catch((error) => {
         console.error(error);
       });
+
 }

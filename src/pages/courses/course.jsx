@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
@@ -10,13 +11,19 @@ import * as S from "./courseStyle";
 import { useDataBase } from "../../firebase/fireCourses";
 
 export const Course = () => {
+  const { id } = useParams();
   const navigate = useNavigate();
   const { isAuth } = useAuth();
   const dispatch = useDispatch();
-  const { id } = useParams();
+  const course = textAboutTraining.find((course) => course.id === Number(id));
+    if (course === undefined) {
+      console.log(1);
+      navigate("/")
+     }
+
 
   const data = useSelector((state) => state.course);
-  const course = textAboutTraining.find((course) => course.id === Number(id));
+
   const [showCourseAppointModal, setShowCourseAppointModal] = useState(false);
   useDataBase(course._id);
   useEffect(() => {
@@ -36,12 +43,13 @@ export const Course = () => {
   };
 
   useEffect(() => {
-    dispatch(
-      setLogo({
-        logo: "black",
-      })
-    );
+    dispatch(setLogo({
+    logo: "black",
+    }))
+
   }, []);
+
+  console.log(data);
 
   return (
     <S.Container>

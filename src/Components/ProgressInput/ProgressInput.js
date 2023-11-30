@@ -2,35 +2,44 @@ import { useParams } from 'react-router-dom';
 import * as S from './ProgressInput.styled';
 import { useState } from 'react';
 import ValidatedProgress from '../ValidatedProgress/ValidatedProgress';
+import { updateProgressExercise } from '../../firebase/updateUserProgress';
+import { useDataWorkout } from '../../firebase/fireWorkouts';
 
 export default function ProgressInput ({ closeInput, yogaWorkouts, setYogaWorkouts }) {
-
+    const [newPogress, setNewProgress] = useState([])
         //выбранный урок из списка
         const params = useParams();
         const index = Number(params.id);
 
         const [confirmOnShow, setConfirmOnShow] = useState(false);
         const submitProgress = () => {
+            updateProgressExercise(index, newPogress)
             setConfirmOnShow(true);
         }
-
-        // const inputHandler = ({ id, value }) => {
+            function ProgressHTML(props) {
+                function saveData(val) {
+                    const id = props.exercise.id - 1;
+                    let tempValues = newPogress;
+                    tempValues[id] = Number(val);
+                    setNewProgress(tempValues)
+                }
+                return(
+                    <S.ProgressItem key={props.exercise.id}>
+                    <label htmlFor={props.exercise.id}>Сколько раз вы сделали {props.exercise.name} </label>
+                    <S.ProgressItemInput placeholder='Введите значение' id={props.exercise.id} type='number'
+                    onChange={(event) => saveData(event.target.value)}
+                     />
+                </S.ProgressItem>
+                )
+            }
             
-        //     const updYogaWorkouts = [...yogaWorkouts];
-        //     const workout = updYogaWorkouts[index].exercise.find(item => item.id === id);
-        //     workout.repeats_done = value;
-        //     setYogaWorkouts(updYogaWorkouts);
-        // };
-
-        const progressList = yogaWorkouts[index].exercise.map(exercise => 
-            <S.ProgressItem key={exercise.id}>
-                <label htmlFor={exercise.id}>Сколько раз вы сделали {exercise.name} </label>
-                <S.ProgressItemInput placeholder='Введите значение' id={exercise.id} type='number'
-                //  onChange={inputHandler({id: exercise.id, value: ((e) => e.target.value)})}  
-                 />
-            </S.ProgressItem>
-            )
-
+            function ProgressList2 () {
+                return (
+                    yogaWorkouts[index].exercise.map((exercise) => (
+                        <ProgressHTML exercise={exercise} />
+                      ))
+                )
+            };
     return (
         <S.ProgressContainer>
             {confirmOnShow ? 
@@ -41,7 +50,7 @@ export default function ProgressInput ({ closeInput, yogaWorkouts, setYogaWorkou
                 </S.ProgressCloseButton>
                 <S.ProgressHeader>Мой прогресс</S.ProgressHeader>
                 <S.ProgressList>
-                    {progressList}
+                    <ProgressList2/>
                     <S.ProgressInputButton onClick={() => submitProgress()} type='submit'>Отправить</S.ProgressInputButton>
                 </S.ProgressList>
             </S.ProgressWrapper> }

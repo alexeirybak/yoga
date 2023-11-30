@@ -1,13 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit";
 
-// const initialState = {
-//     name: null,
-//     type: null,
-//     video_file: null,
-//     isFinished: null,
-//     exercise: [],
-//     id: null,
-// };
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
 trainingData: [],
@@ -26,8 +18,3 @@ const workoutSlice = createSlice({
 export const { setWorkout } = workoutSlice.actions;
 export default workoutSlice.reducer;
 
-// state.type = action.payload.type;
-// state.video_file = action.payload.video_file;
-// state.isFinished = action.payload.isFinished;
-// state.exercise = action.payload.exercise;
-// state.id = action.payload.id;

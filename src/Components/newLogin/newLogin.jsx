@@ -1,9 +1,11 @@
+
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { changeLogin } from "../../firebase/changeEmail";
 import * as S from "./styles";
 
 export const NewLogin = ({ setEdit }) => {
+
   const [login, setLogin] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -24,6 +26,7 @@ export const NewLogin = ({ setEdit }) => {
       setError(null);
     }
   };
+
   return (
     <S.Wrapper>
       <S.ModalBlock>

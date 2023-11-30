@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Main } from "../main/main";
 import { Login } from "../login/login";
@@ -7,9 +7,9 @@ import { NotFound } from "../NotFound/not-found";
 import { Course } from "../courses/course";
 import { Profile } from "../profile/profile";
 import { Register } from "../register/registration";
-import { Trainings } from "../trainings/trainings";
+import { Trainings } from "../trainings";
 import { ProtectedRoute } from "../../Components/ProtectedRoute/ProtectedRoute";
- 
+
 export const AppRoutes = () => {
   let user = useSelector((state) => state.user.userMail);
 
