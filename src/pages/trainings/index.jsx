@@ -11,19 +11,17 @@ import { useUser } from "../../firebase/getUser";
 import { dataTraining } from "../../context/dataTraining";
 
 export const Trainings = () => {
+  useUser()
   const {id} = useParams()
   const getProgressInPercent = ({ needed, done }) => {
     return (done / needed) * 100;
   };
   const progress = useSelector(state => state.progress)
   const [dataTrain, setDataTrain] = useState(null)
-
-useUser()
 useEffect(() => {
   if(progress.userProgressAll.userProgressAll.email !== null) {
     setDataTrain(progress.userProgressAll.userProgressAll.email)
     // console.log(progress.userProgressAll.userProgressAll.workoutsProgress[id][id]);
-    console.log(dataTrain);
     setShow(true)
   }
 }, [progress]);
