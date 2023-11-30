@@ -2,37 +2,31 @@ import { useParams } from 'react-router-dom';
 import * as S from './ProgressInput.styled';
 import { useState } from 'react';
 import ValidatedProgress from '../ValidatedProgress/ValidatedProgress';
-import { updateProgressExercise } from '../../firebase/updateUserProgress';
-import { useSelector } from 'react-redux';
-import { useDataWorkout } from '../../firebase/fireWorkouts';
 
-export default function ProgressInput ({ closeInput, trainingChosen }) {
+export default function ProgressInput ({ closeInput, yogaWorkouts, setYogaWorkouts }) {
 
-        // выбранный урок из списка
-        // const params = useParams();
-        // const index = Number(params.id);
-
-        // const yogaWorkouts = useSelector(state => state.workout);
+        //выбранный урок из списка
+        const params = useParams();
+        const index = Number(params.id);
 
         const [confirmOnShow, setConfirmOnShow] = useState(false);
         const submitProgress = () => {
             setConfirmOnShow(true);
         }
 
-        console.log(trainingChosen);
+        // const inputHandler = ({ id, value }) => {
+            
+        //     const updYogaWorkouts = [...yogaWorkouts];
+        //     const workout = updYogaWorkouts[index].exercise.find(item => item.id === id);
+        //     workout.repeats_done = value;
+        //     setYogaWorkouts(updYogaWorkouts);
+        // };
 
-        //нихрена пока не работает
-        const inputHandler = ({ id }) => (event) => {
-            updateProgressExercise({ IDtraining: trainingChosen.id, IDexercise: id, newValue: event.target.value });
-        };
-
-
-
-        const progressList = trainingChosen.exercise.map(exercise => 
+        const progressList = yogaWorkouts[index].exercise.map(exercise => 
             <S.ProgressItem key={exercise.id}>
                 <label htmlFor={exercise.id}>Сколько раз вы сделали {exercise.name} </label>
                 <S.ProgressItemInput placeholder='Введите значение' id={exercise.id} type='number'
-                 onChange={inputHandler({ id: exercise.id })}  
+                //  onChange={inputHandler({id: exercise.id, value: ((e) => e.target.value)})}  
                  />
             </S.ProgressItem>
             )

@@ -15,7 +15,7 @@ import "firebase/compat/database";
       });
 }
 
-export function updateProgressExercise({ IDtraining, IDexercise, newValue }) {
+export function updateProgressExercise(IDtraining, IDexercise, newValue) {
     const user = localStorage.getItem('email');
     firebase
     .database()

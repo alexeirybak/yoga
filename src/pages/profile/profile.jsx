@@ -164,8 +164,6 @@ console.log(progress);
     );
   }, []);
 
-  useDataWorkout();
-
 
   const [formOnShow, setFormOnShow] = useState(false);
 
