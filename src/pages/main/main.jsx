@@ -8,6 +8,7 @@ import { Header } from "../../Components/header/header";
 import { useUser } from "../../firebase/getUser";
 
 import { updateProgressExercise } from "../../firebase/updateUserProgress";
+import { useDataWorkout } from "../../firebase/fireWorkouts";
 
 
 
@@ -27,6 +28,7 @@ useEffect(() => {
   }))
 }, []);
 useUser()
+useDataWorkout();
       return (
     <S.Container>
       <S.Content>

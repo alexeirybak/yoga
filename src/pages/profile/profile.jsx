@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 import WorkoutSelect from "../../Components/WorkoutSelect/WorkoutSelect";
 import { Loader } from "../../Components/loader/loader";
 import { useDataWorkout } from "../../firebase/fireWorkouts";
-
+import { dataTraining } from "../../context/dataTraining";
 const courses = [{ id: "1", img: "/img/profCard1.png" }];
 
   //мокап тренировок
@@ -150,10 +150,12 @@ export const Profile = () => {
   const [editPass, setEditPass] = useState(false);
   const [valuePass, setValuePass] = useState(null);
   const dispatch = useDispatch();
-
+  const progress = useSelector(state => state.progress)
+  const [dataTrain, setDataTrain] = useState("1")
+  useDataWorkout();
   const dataWorkout = useSelector((state) => state.workout);
   const email = localStorage.getItem("email");
-
+console.log(progress);
   useEffect(() => {
     dispatch(
       setLogo({
@@ -162,8 +164,6 @@ export const Profile = () => {
     );
   }, []);
 
-  const [yogaWorkouts, setYogaWorkouts] = useState(dataWorkout);
-  console.log(yogaWorkouts);
 
   const [formOnShow, setFormOnShow] = useState(false);
 
@@ -176,15 +176,11 @@ export const Profile = () => {
   const workoutSelectionForm = (
     <WorkoutSelect
       closeForm={closeForm}
-      yogaWorkouts={yogaWorkouts}
-      setYogaWorkouts={setYogaWorkouts}
     ></WorkoutSelect>
   );
 
-  useDataWorkout();
-
-
   return (
+    
     <S.Container>
       <S.Content>
         <Header />
@@ -214,22 +210,25 @@ export const Profile = () => {
           </S.PassButton>
         </S.ChangeLogPass>
         <S.TitleCourse>Мои курсы</S.TitleCourse>
-
+        
         <S.SportChoice>
           {courses.map((course) => (
             <S.Sport key={course.id}>
               <S.ProfCard src={course.img} alt="prof_card" />
-
+              
               <S.SportButton onClick={() => setFormOnShow(true)}>
                 Перейти →
               </S.SportButton>
+              
             </S.Sport>
 
           ))}
         </S.SportChoice>
+        
         {formOnShow ? workoutSelectionForm : null}
       </S.Content>
     </S.Container>
+
   );
 };
 
