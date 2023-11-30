@@ -9,7 +9,6 @@ export default function WorkoutSelect({
   
   const yogaWorkouts = useSelector(state => state.workout)
   console.log(yogaWorkouts);
-
   const workoutList = yogaWorkouts.trainingData.map((workout) => (
     <Link key={workout.id} to={`/training/${workout.id}`}>
       <S.SelectItem $isFinished={workout.exercise.every((elem) => elem.repeats_done >= elem.repeats)}>

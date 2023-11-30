@@ -7,12 +7,26 @@ import ProgressInput from "../../Components/ProgressInput/ProgressInput";
 import { setLogo } from "../../store/slices/logoSlices";
 import { useDispatch, useSelector } from "react-redux";
 import { useDataWorkout } from "../../firebase/fireWorkouts";
-
+import { useUser } from "../../firebase/getUser";
+import { dataTraining } from "../../context/dataTraining";
 
 export const Trainings = () => {
+  const {id} = useParams()
   const getProgressInPercent = ({ needed, done }) => {
     return (done / needed) * 100;
   };
+  const progress = useSelector(state => state.progress)
+  const [dataTrain, setDataTrain] = useState(null)
+
+useUser()
+useEffect(() => {
+  if(progress.userProgressAll.userProgressAll.email !== null) {
+    setDataTrain(progress.userProgressAll.userProgressAll.email)
+    // console.log(progress.userProgressAll.userProgressAll.workoutsProgress[id][id]);
+    console.log(dataTrain);
+    setShow(true)
+  }
+}, [progress]);
 
   //мокап тренировок
   // const [yogaWorkouts, setYogaWorkouts] = useState([
@@ -195,7 +209,7 @@ export const Trainings = () => {
   console.log(trainingChosen);
 
   const [inputOnShow, setInputOnShow] = useState(false);
-
+  const [show, setShow] = useState(false);
   const closeInput = () => {
     setInputOnShow(false);
   };
@@ -214,76 +228,78 @@ export const Trainings = () => {
       })
     );
   }, []);
-
+if(show === true){
   return (
     <S.Wrapper>
-      <S.HeaderWrapper>
-        <Header />
+    <S.HeaderWrapper>
+      <Header />
 
-        <S.ContentBlock>
-          <S.ContentVideoBlock>
-            <S.VideoHeader>Йога</S.VideoHeader>
-            <S.VideoName>
-              {trainingChosen.name} / {trainingChosen.type}
-            </S.VideoName>
+      <S.ContentBlock>
+        <S.ContentVideoBlock>
+          <S.VideoHeader>Йога</S.VideoHeader>
+          <S.VideoName>
+            {trainingChosen.name} / {trainingChosen.type}
+          </S.VideoName>
 
-            <S.VideoExercise
-              src={trainingChosen.video_file}
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen
-            />
-          </S.ContentVideoBlock>
-          <S.ExerciseBlock>
-            <S.ExerciseDescription>
-              <S.ExerciseDescriptionHeader>
-                Упражнения
-              </S.ExerciseDescriptionHeader>
-              <S.ExercisesList>
-                {trainingChosen.exercise.map((exe, index) => (
-                  <S.ExerciseListItem key={index}>
-                    {exe.name} ({exe.repeats} повторений)
-                  </S.ExerciseListItem>
-                ))}
-              </S.ExercisesList>
-              <S.FillInProgress onClick={() => setInputOnShow(true)}>
-                Заполнить свой прогресс
-              </S.FillInProgress>
-            </S.ExerciseDescription>
-            <S.Progress>
-              <S.ProgressHeader>Мой прогресс по тренировке</S.ProgressHeader>
-              <S.ProgressDetails>
-                {trainingChosen.exercise.map((exe, index) => (
-                  <S.ProgressItem key={index}>
-                    <S.ExerciseProgress>{exe.name}</S.ExerciseProgress>
-                    <S.FirstExerciseBar
-                      $progColorLight={colors[index].light}
+          <S.VideoExercise
+            src={trainingChosen.video_file}
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+          />
+        </S.ContentVideoBlock>
+        <S.ExerciseBlock>
+          <S.ExerciseDescription>
+            <S.ExerciseDescriptionHeader>
+              Упражнения
+            </S.ExerciseDescriptionHeader>
+            <S.ExercisesList>
+              {trainingChosen.exercise.map((exe, index) => (
+                <S.ExerciseListItem key={index}>
+                  {exe.name} ({exe.repeats} повторений)
+                </S.ExerciseListItem>
+              ))}
+            </S.ExercisesList>
+            <S.FillInProgress onClick={() => setInputOnShow(true)}>
+              Заполнить свой прогресс
+            </S.FillInProgress>
+          </S.ExerciseDescription>
+          <S.Progress>
+            <S.ProgressHeader>Мой прогресс по тренировке</S.ProgressHeader>
+            <S.ProgressDetails>
+              {trainingChosen.exercise.map((exe, index) => (
+                <S.ProgressItem key={index}>
+                  <S.ExerciseProgress>{exe.name}</S.ExerciseProgress>
+                  <S.FirstExerciseBar
+                    $progColorLight={colors[index].light}
+                    $progColorMain={colors[index].main}
+                  >
+                    <S.FirstFilledIn
                       $progColorMain={colors[index].main}
+                      $width={getProgressInPercent({
+                        needed: exe.repeats,
+                        done: exe.repeats_done,
+                      })}
                     >
-                      <S.FirstFilledIn
-                        $progColorMain={colors[index].main}
-                        $width={getProgressInPercent({
+                      <S.ProgressResult>
+                        {getProgressInPercent({
                           needed: exe.repeats,
                           done: exe.repeats_done,
                         })}
-                      >
-                        <S.ProgressResult>
-                          {getProgressInPercent({
-                            needed: exe.repeats,
-                            done: exe.repeats_done,
-                          })}
-                          %
-                        </S.ProgressResult>
-                      </S.FirstFilledIn>
-                    </S.FirstExerciseBar>
-                  </S.ProgressItem>
-                ))}
-              </S.ProgressDetails>
-            </S.Progress>
-          </S.ExerciseBlock>
-        </S.ContentBlock>
-        {inputOnShow ? progressForm : null}
-      </S.HeaderWrapper>
-    </S.Wrapper>
-  );
+                        %
+                      </S.ProgressResult>
+                    </S.FirstFilledIn>
+                  </S.FirstExerciseBar>
+                </S.ProgressItem>
+              ))}
+            </S.ProgressDetails>
+          </S.Progress>
+        </S.ExerciseBlock>
+      </S.ContentBlock>
+      {inputOnShow ? progressForm : null}
+    </S.HeaderWrapper>
+  </S.Wrapper>
+);
 };
+}
+
