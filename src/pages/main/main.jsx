@@ -7,9 +7,8 @@ import { setLogo } from "../../store/slices/logoSlices";
 import { Header } from "../../Components/header/header";
 import { useUser } from "../../firebase/getUser";
 
-import { updateProgressExercise } from "../../firebase/updateUserProgress";
 import { useDataWorkout } from "../../firebase/fireWorkouts";
-import { CheckCredential } from "../../firebase/changePass";
+import { getAuth } from "firebase/auth";
 
 
 
@@ -22,13 +21,14 @@ const courses = [
 ];
 
 export const Main = () => {
+  const user = getAuth()
+  console.log(user);
 const dispatch = useDispatch();
 useEffect(() => {
   dispatch(setLogo({
     logo: "white",
   }))
 }, []);
-CheckCredential()
 useUser()
 useDataWorkout();
       return (

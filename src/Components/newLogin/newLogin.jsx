@@ -1,22 +1,27 @@
-
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { changeLogin } from "../../firebase/changeEmail";
 import * as S from "./styles";
 
 export const NewLogin = ({ setEdit }) => {
-
   const [login, setLogin] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [valueOldPass, setValueOldPass] = useState("");
   const handleClose = () => {
     setEdit(false);
   };
 
-  const handleSaveNewLogin = () => {
-    changeLogin(login);
-    console.log("object");
+  const handleSaveNewLogin = async (event) => {
+    event.preventDefault();
+    await changeLogin(login);
+    const responsError = localStorage.getItem("error");
+    if (responsError !== null) {
+      setError(responsError);
+    }
+    console.log("done");
   };
+
   const newLogin = (event) => {
     const loginValidation = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
     setLogin(event.target.value);
@@ -27,11 +32,20 @@ export const NewLogin = ({ setEdit }) => {
     }
   };
 
+  const enterOldPassword = (event) => {
+    if (event.target.value.length < 6) {
+      setError("Пароль должен быть не менее 6 знаков");
+    } else {
+      setError("");
+    }
+    setValueOldPass(event.target.value);
+  };
+
   return (
     <S.Wrapper>
       <S.ModalBlock>
         <S.Closer src="/img/close.png" alt="закрыть" onClick={handleClose} />
-        <S.ModalFormLogin action="#">
+        <S.ModalFormLogin onSubmit={handleSaveNewLogin}>
           <Link to="/">
             <S.ModalFormLoginImg src="/img/logoBlack.png" alt="logo" />
           </Link>
@@ -44,12 +58,15 @@ export const NewLogin = ({ setEdit }) => {
               onChange={newLogin}
               value={login}
             />
+            <S.ModalInput
+              type="password"
+              placeholder="Введите старый пароль"
+              value={valueOldPass}
+              onChange={enterOldPassword}
+            />
           </S.ModalFormLoginInput>
           <S.ModalFormLoginButtons>
-            <S.ModalButtonEnter
-              disabled={isLoading}
-              onClick={handleSaveNewLogin}
-            >
+            <S.ModalButtonEnter type="submit" disabled={isLoading}>
               {isLoading ? "Меняю..." : "Сохранить"}
             </S.ModalButtonEnter>
           </S.ModalFormLoginButtons>
