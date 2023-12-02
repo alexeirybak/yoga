@@ -8,6 +8,7 @@ export const NewLogin = ({ setEdit }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [valueOldPass, setValueOldPass] = useState("");
+  
   const handleClose = () => {
     setEdit(false);
   };
