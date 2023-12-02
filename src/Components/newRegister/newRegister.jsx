@@ -71,7 +71,7 @@ export function NewRegister({ setEditPass }) {
     <S.Wrapper>
       <S.ModalBlock>
         <S.Closer src="/img/close.png" alt="закрыть" onClick={handleClose} />
-        <S.ModalFormLogin onSubmit={handleSave}>
+        <S.ModalFormLogin action="#" onSubmit={handleSave}>
           <Link to="/">
             <S.ModalFormLoginImg src="/img/logoBlack.png" alt="logo" />
           </Link>

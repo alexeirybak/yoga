@@ -1,6 +1,7 @@
 
 import firebase from "firebase/compat/app";
 import "firebase/compat/database";
+import { useDataWorkout } from "./fireWorkouts";
 
     function updatePogressDone(id) {
     const user = localStorage.getItem('email');
@@ -18,7 +19,6 @@ import "firebase/compat/database";
 export function updateProgressExercise(IDtraining, progress) {
     const user = localStorage.getItem('email');
     const id = IDtraining
-    console.log(progress);
     firebase
     .database()
     .ref(`users/` + user.replace(/\./g, "-") + '/workoutsProgress' + `/${IDtraining}`)
@@ -26,5 +26,4 @@ export function updateProgressExercise(IDtraining, progress) {
       .catch((error) => {
         console.error(error);
       });
-
 }
