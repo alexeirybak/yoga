@@ -7,9 +7,7 @@ import { useDataWorkout } from '../../firebase/fireWorkouts';
 import { useUser } from '../../firebase/getUser';
 import { useSelector } from 'react-redux';
 
-export default function ProgressInput ({ closeInput, trainingChosen }) {
-    const [newProgress, setNewProgress] = useState([]);
-    const [newID, setNewId] = useState([]);
+export default function ProgressInput ({setValue, closeInput, trainingChosen }) {
     const [newOutData, setNewOutData] = useState([]);
     const [confirmOnShow, setConfirmOnShow] = useState(false);
     //выбранный урок из списка
@@ -21,8 +19,11 @@ export default function ProgressInput ({ closeInput, trainingChosen }) {
                 });
                 if(newOutData2.length === newOutData.length){
                     const minusIndex = index - 1;
-                    updateProgressExercise(minusIndex, newOutData);
-                    await setConfirmOnShow(true);
+                    await updateProgressExercise(minusIndex, newOutData);
+                    setConfirmOnShow(true);
+                    
+                    
+
                 } else {
                     alert("Введите все значения, иначе магии не будет")
                 }
@@ -36,8 +37,6 @@ export default function ProgressInput ({ closeInput, trainingChosen }) {
                     const nameTraining = props.exercise.name
                     tempOutData[id] = {id: id, training: nameTraining, progress: Number(val)};
                     setNewOutData(newOutData)
-
-
                     // опция для отправки данных в массиве
                     // const newAddedProgress = {id: props.exercise.id, repeats_done: val}
                     // setNewProgress([...newProgress, newAddedProgress])
@@ -59,10 +58,11 @@ export default function ProgressInput ({ closeInput, trainingChosen }) {
                         <ProgressHTML exercise={exercise} />
                       )))};
 
+
     return (
         <S.ProgressContainer>
             {confirmOnShow ? 
-            <ValidatedProgress closeInput={closeInput}/> :
+            <ValidatedProgress setValue={setValue} closeInput={closeInput}/> :
             <S.ProgressWrapper>
                 <S.ProgressCloseButton onClick={closeInput}>
                     <use xlinkHref='/icons/sprite.svg#icon-close' />

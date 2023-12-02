@@ -11,11 +11,11 @@ import { Loader } from "../../Components/loader/loader";
 
 
 export const Trainings = () => {
-  
+  const [value,setValue] = useState();
   useUser();
   useDataWorkout();
-  console.log('object');
   const [loaderOn, setLoaderOn] = useState(false);
+  const [showUpdt, setShowUpdt] = useState(true);
   const yogaWorkouts = useSelector(state => state.workout);
   const params = useParams();
   const index = Number(params.id);
@@ -81,12 +81,15 @@ export const Trainings = () => {
 
 
 
-  const progressForm = (
+  const ProgressForm = () => {
+
+    return(
     <ProgressInput
       closeInput={closeInput}
       trainingChosen={trainingChosen}
     ></ProgressInput>
-  );
+  )
+    }
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(
@@ -95,6 +98,43 @@ export const Trainings = () => {
       })
     );
   }, []);
+
+  const ProgressList = () => {
+    
+    return (
+      <>
+      <S.ProgressHeader>Мой прогресс по тренировке</S.ProgressHeader>
+      <S.ProgressDetails>
+        {trainingChosen?.exercise.map((exe, index) => (
+          <S.ProgressItem key={index}>
+            <S.ExerciseProgress>{exe.name}</S.ExerciseProgress>
+            <S.FirstExerciseBar
+              $progColorLight={colors[index].light}
+              $progColorMain={colors[index].main}
+            >
+              <S.FirstFilledIn
+                $progColorMain={colors[index].main}
+                $width={getProgressInPercent({
+                  needed: exe.repeats,
+                  id: exe.id,
+                })}
+              >
+                <S.ProgressResult>
+                  {getProgressInPercent({
+                    needed: exe.repeats,
+                    id: exe.id,
+                  })}
+                  %
+                </S.ProgressResult>
+              </S.FirstFilledIn>
+            </S.FirstExerciseBar>
+          </S.ProgressItem>
+        ))}
+      </S.ProgressDetails>
+      </>
+    )
+  }
+
 
     return (
       <S.Wrapper>
@@ -134,39 +174,13 @@ export const Trainings = () => {
               </S.FillInProgress>
             </S.ExerciseDescription>
             <S.Progress>
-              <S.ProgressHeader>Мой прогресс по тренировке</S.ProgressHeader>
-              <S.ProgressDetails>
-                {trainingChosen?.exercise.map((exe, index) => (
-                  <S.ProgressItem key={index}>
-                    <S.ExerciseProgress>{exe.name}</S.ExerciseProgress>
-                    <S.FirstExerciseBar
-                      $progColorLight={colors[index].light}
-                      $progColorMain={colors[index].main}
-                    >
-                      <S.FirstFilledIn
-                        $progColorMain={colors[index].main}
-                        $width={getProgressInPercent({
-                          needed: exe.repeats,
-                          id: exe.id,
-                        })}
-                      >
-                        <S.ProgressResult>
-                          {getProgressInPercent({
-                            needed: exe.repeats,
-                            id: exe.id,
-                          })}
-                          %
-                        </S.ProgressResult>
-                      </S.FirstFilledIn>
-                    </S.FirstExerciseBar>
-                  </S.ProgressItem>
-                ))}
-              </S.ProgressDetails>
+              { showUpdt ? <ProgressList/>
+  : null}
             </S.Progress>
           </S.ExerciseBlock>
         </S.ContentBlock>
         }
-        {inputOnShow ? progressForm : null}
+        {inputOnShow ? <ProgressForm/> : null}
       </S.HeaderWrapper>
     </S.Wrapper>
   );
